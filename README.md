@@ -28,3 +28,4 @@ aiueo
 kakikukeko
 
 さしすせそ
+アイウエオ

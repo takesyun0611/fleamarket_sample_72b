@@ -32,3 +32,5 @@ kakikukeko
 dsファfdsfsfサfs
 
 あああああああああ
+
+力こそパワー

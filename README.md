@@ -28,4 +28,7 @@ aiueo
 kakikukeko
 
 さしすせそ
-アイウエオ
+
+dsファfdsfsfサfs
+
+あああああああああ

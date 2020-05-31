@@ -29,3 +29,5 @@ kakikukeko
 
 さしすせそ
 アイウエオ
+
+tikara koso power

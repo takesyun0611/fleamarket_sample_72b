@@ -23,3 +23,9 @@ Things you may want to cover:
 
 * ...
 TEST
+test
+aiueo
+kakikukeko
+
+さしすせそ
+アイウエオ

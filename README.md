@@ -1,34 +1,94 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users
+|Column|Type|Options|
+|------|----|-------|
+|email|string|null:false, unique:true|
+|password|integer|null:false|
+|nickName|string|null:false|
+|credit|string|
+|familyName|string|null:false|
+|givenName|string|null:false|
+|familyNameFurigana|string|null:false|
+|givenNameFurigana|string|null:false|
+|birthday|date|null:false|
+|sendFamilyName|string|
+|sendGivenName|string|
+|sendFamilyNameHurigana|string|
+|sendGivenNameFurigana|string|
+|mailAddress|string|
+|prefecture|string|
+|city|string|
+|houseNum|string|
+|buildingName|string|
+|roomNum|string|
+|phoneNum|string|
 
-Things you may want to cover:
+### Association
 
-* Ruby version
 
-* System dependencies
+## products
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null:false|
+|description|string|null:false|
+|brand|string|
+|status|string|
+|deliveryFee|string|null:false|
+|deliveryMethod|string|
+|shippingArea|string|
+|dateOfShip|string|null:false|
+|price|integer|null:false|
+|user_id|integer|null:false, foreign_key:true|
+|Acategory_id|integer|null:false, foreign_key:true|
+|Bcategory_id|integer|null:false, foreign_key:true|
+|Ccategory_id|integer|null:false, foreign_key:true|
+|number|integer|null:false|
 
-* Configuration
+### Association
 
-* Database creation
 
-* Database initialization
+## pictures
+|Column|Type|Options|
+|------|----|-------|
+|content|string|null:false|
+|products_id|integer|null:false, foreign_key:true|
 
-* How to run the test suite
+### Association
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+## orders
+|Column|Type|Options|
+|------|----|-------|
+|product_id|integer|null:false, foreign_key:true|
+|num|integer|null:false|
+|user_id|integer|null:false, foreign_key:true|
+|rating|integer|
 
-* ...
-TEST
-test
-aiueo
-kakikukeko
+### Association
 
-さしすせそ
 
-アイウエオ
-testbranch
+## Acategories
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null:false|
 
+### Association
+
+
+## Bcategories
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null:false|
+|categoryA_id|integer|null:false|
+
+### Association
+
+
+## Ccategories
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null:false|
+|categoryB_id|integer|null:false|
+
+### Association

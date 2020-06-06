@@ -20,17 +20,17 @@
 - has_many :products
 - has_many :orders
 
-## shipment
+## shipments
 |Column|Type|Options|
 |------|----|-------|
 |familyName|string|null:false|
 |givenName|string|null:false|
 |familyNameKana|string|null:false|
 |givenNameKana|string|null:false|
-|mailAddress|string|
-|prefecture|string|
-|city|string|
-|houseNum|string|
+|mailAddress|string|null:false|
+|prefecture|string|null:false|
+|city|string|null:false|
+|houseNum|string|null:false|
 |buildingName|string|
 |roomNum|string|
 |phoneNum|string|
@@ -57,10 +57,10 @@
 |size|string|
 
 ### Association
-- belongs_to :user
-- belongs_to :category
 - has_many :orders
 - has_many :pictures
+- belongs_to :user
+- belongs_to :category
 - belongs_to :brand
 
 ## pictures

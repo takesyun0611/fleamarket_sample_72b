@@ -5,14 +5,14 @@
 |------|----|-------|
 |email|string|null:false, unique:true|
 |password|integer|null:false|
-|nickName|string|null:false|
+|nickname|string|null:false|
 |icon|string|
-|familyName|string|null:false|
-|givenName|string|null:false|
-|familyNameKana|string|null:false|
-|givenNameKana|string|null:false|
+|family_name|string|null:false|
+|given_name|string|null:false|
+|family_name_kana|string|null:false|
+|given_name_kana|string|null:false|
 |birthday|date|null:false|
-|phoneNum|string|
+|phone_number|varchar|
 |intro|text|
 
 ### Association
@@ -23,17 +23,17 @@
 ## shipments
 |Column|Type|Options|
 |------|----|-------|
-|familyName|string|null:false|
-|givenName|string|null:false|
-|familyNameKana|string|null:false|
-|givenNameKana|string|null:false|
-|mailAddress|string|null:false|
+|family_name|string|null:false|
+|given_name|string|null:false|
+|family_name_kana|string|null:false|
+|given_name_kana|string|null:false|
+|postal_code|string|null:false|
 |prefecture|string|null:false|
 |city|string|null:false|
-|houseNum|string|null:false|
-|buildingName|string|
-|roomNum|string|
-|phoneNum|string|
+|house_number|string|null:false|
+|building_name|string|
+|room_number|string|
+|phone_number|varchar|
 |user_id|integer|foreign_key:true|
 
 ### Association
@@ -46,10 +46,10 @@
 |description|string|null:false|
 |brand_id|string|foreign_key:true|
 |status|string|
-|deliveryFee|string|null:false|
-|deliveryMethod|string|
-|shippingArea|string|prefecture_jp|
-|dateOfShip|string|null:false|
+|delivery_fee|string|null:false|
+|delivery_method|string|
+|shipping_area|string|prefecture_jp|
+|date_of_ship|string|null:false|
 |price|integer|null:false|
 |user_id|integer|null:false, foreign_key:true|
 |category_id|integer|null:false, foreign_key:true|

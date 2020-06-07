@@ -28,7 +28,7 @@
 ## shipments
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|foreign_key:true|
+|user_id|integer|null:false, foreign_key:true|
 |family_name|string|null:false|
 |given_name|string|null:false|
 |family_name_kana|string|null:false|
@@ -57,7 +57,7 @@
 |price|integer|null:false|
 |prefecture_id|integer|foreign_key:true|
 |size|string|
-|user_id|integer|foreign_key:true|
+|user_id|integer|null:false, foreign_key:true|
 |brand_id|integer|foreign_key:true|
 |category_id|integer|foreign_key:true|
 |is_bought|boolean|null:false|
@@ -115,7 +115,7 @@
 ## cards
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|foreign_key:true|
+|user_id|integer|null:false, foreign_key:true|
 |costomer|string|null:false|
 |card_id|string|null:false|
 ### Association
@@ -127,7 +127,7 @@
 |------|----|-------|
 |provider|string|
 |uid|string|
-|user_id|integer|foreign_key:true|
+|user_id|integer|null:false, foreign_key:true|
 ### Association
 - belongs_to :user
 
@@ -135,8 +135,8 @@
 ## likes
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|foreign_key:true|
-|products_id|integer|foreign_key:true|
+|user_id|integer|null:false, foreign_key:true|
+|products_id|integer|null:false, foreign_key:true|
 ### Association
 - belongs_to :user
 - belongs_to :product
@@ -146,8 +146,8 @@
 |Column|Type|Options|
 |------|----|-------|
 |content|string|null:false|
-|product_id|integer|foreign_key:true|
-|user_id|integer|foreign_key:true
+|product_id|integer|null:false, foreign_key:true|
+|user_id|integer|null:false, foreign_key:true
 ### Association
 - belongs_to :user
 - belongs_to :product

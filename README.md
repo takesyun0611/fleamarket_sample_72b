@@ -63,9 +63,9 @@
 |is_bought|boolean|null:false|
 ### Association
 - has_many :orders
-- has_many :pictures
-- has_many :comments
-- has_many :likes
+- has_many :pictures, dependent: :destroy
+- has_many :comments, dependent: :destroy
+- has_many :likes, dependent: :destroy
 - belongs_to :user
 - belongs_to :category
 - belongs_to :brand

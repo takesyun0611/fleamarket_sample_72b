@@ -1,6 +1,5 @@
 class Shipment < ApplicationRecord
   belongs_to :user, optional: true
-  belongs_to :prefecture
 
   validates :postal_code, presence: true
   validates :city, presence: true

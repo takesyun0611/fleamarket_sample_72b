@@ -24,16 +24,15 @@ ActiveRecord::Schema.define(version: 2020_06_09_130433) do
     t.string "family_name_kana", null: false
     t.string "given_name_kana", null: false
     t.string "postal_code", null: false
+    t.string "prefecture", null: false
     t.string "city", null: false
     t.string "house_number", null: false
     t.string "building_name"
     t.string "room_number"
     t.string "phone_number"
     t.bigint "user_id"
-    t.bigint "prefecture_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["prefecture_id"], name: "index_shipments_on_prefecture_id"
     t.index ["user_id"], name: "index_shipments_on_user_id"
   end
 
@@ -58,6 +57,5 @@ ActiveRecord::Schema.define(version: 2020_06_09_130433) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "shipments", "prefectures"
   add_foreign_key "shipments", "users"
 end

@@ -29,12 +29,12 @@ ActiveRecord::Schema.define(version: 2020_06_09_130433) do
     t.string "building_name"
     t.string "room_number"
     t.string "phone_number"
-    t.bigint "users_id"
-    t.bigint "prefectures_id"
+    t.bigint "user_id"
+    t.bigint "prefecture_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["prefectures_id"], name: "index_shipments_on_prefectures_id"
-    t.index ["users_id"], name: "index_shipments_on_users_id"
+    t.index ["prefecture_id"], name: "index_shipments_on_prefecture_id"
+    t.index ["user_id"], name: "index_shipments_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -58,6 +58,6 @@ ActiveRecord::Schema.define(version: 2020_06_09_130433) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "shipments", "prefectures", column: "prefectures_id"
-  add_foreign_key "shipments", "users", column: "users_id"
+  add_foreign_key "shipments", "prefectures"
+  add_foreign_key "shipments", "users"
 end

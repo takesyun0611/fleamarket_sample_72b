@@ -2,8 +2,11 @@ class Shipment < ApplicationRecord
   belongs_to :user
   belongs_to :prefecture
 
-  [family_name, given_name, family_name_kana, given_name_kana, postal_code, city, house_number].each do |v|
-    validates v,
-      presence: true
-  end
+  validates :postal_code, presence: true
+  validates :city, presence: true
+  validates :house_number, presence: true
+  validates :family_name, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
+  validates :given_name, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
+  validates :family_name_kana, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
+  validates :given_name_kana, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
 end

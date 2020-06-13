@@ -11,8 +11,8 @@ class CreateShipments < ActiveRecord::Migration[5.2]
       t.string :building_name
       t.string :room_number
       t.string :phone_number
-      t.references :users, foreign_key: true
-      t.references :prefectures, foreign_key: true
+      t.reference :users, foreign_key: true
+      t.reference :prefectures, foreign_key: true
       t.timestamps
     end
   end

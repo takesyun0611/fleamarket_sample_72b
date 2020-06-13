@@ -18,7 +18,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
     session["devise.regist_data"] = {user: @user.attributes}
     session["devise.regist_data"][:user]["password"] = params[:user][:password]
-    @shipment = @user.build_shipment
+    @shipment = @user.shipments.build
     render :new_shipment
   end
 
@@ -67,4 +67,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  private
+  def sign_up_params
+    params.require(:user).permit(:email, :password, :password_confirmation, :nickname, :family_name, :given_name, :family_name_kana, :given_name_kana, :birthday, :phone_number, :intro)
+  end
 end

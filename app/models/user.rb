@@ -12,4 +12,5 @@ class User < ApplicationRecord
     validates v,
       format: { with: /\A[ぁ-んァ-ン一-龥]/ }
   end
+  validates :birthday, presence: true
 end

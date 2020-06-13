@@ -8,9 +8,9 @@ class User < ApplicationRecord
   has_many :shipments
 
   validates :nickname, presence: true
-  [family_name, given_name, family_name_kana, given_name_kana].each do |v|
-    validates v,
-      format: { with: /\A[ぁ-んァ-ン一-龥]/ }
-  end
   validates :birthday, presence: true
+  validates :family_name, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
+  validates :given_name, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
+  validates :family_name_kana, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
+  validates :given_name_kana, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
 end

@@ -1,0 +1,25 @@
+.header
+  .top-items
+    .top-items__icons
+      = link_to "/" do
+        = image_tag "http://furima.tokyo/assets/logo-d3d78326971d78b06e3d6f0ba666d025a8ad681286b4d9e00e7dbe8673bcfd23.svg"
+    .top-items__serch
+      .top-items__serch--serch-box
+        %input{type: "text", placeholder: "キーワードから探す"}
+      .top-items__serch--serch-icon
+        = image_tag "http://furima.tokyo/assets/icon-search-60a83ada85216fe00789cd16065281694d9a08948275fef83683fadcf131d84d.svg"
+  .top-navi
+    %ul.top-navi__left
+      %li.top-navi__left--first<
+        = link_to "#" do
+          カテゴリー
+      %li.top-navi__left--second<
+        = link_to "#" do
+          ブランド
+    %ul.top-navi__right
+      %li.top-navi__right--first<
+        = link_to "#" do
+          新規会員登録
+      %li.top-navi__right--second<
+        = link_to "#" do
+          ログイン

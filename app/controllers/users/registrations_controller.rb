@@ -22,6 +22,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
     render :new_shipment
   end
 
+  def create_shipment
+    @user = User.new(session["devise.regist_data"]["user"])
+    @shipment = Shipment.new(shipment_params)
+    unless @shipment.valid?
+      flash.now[:alert] = @shipment.errors.full_messages
+      render :new_shipment and return
+    end
+    @user.shipments.build(@shipment.attributes)
+    @user.save
+    session["devise.regist_data"]["user"].clear
+    sign_in(:user, @user)
+  end
+
   # GET /resource/edit
   # def edit
   #   super
@@ -71,5 +84,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
   def sign_up_params
     params.require(:user).permit(:email, :password, :password_confirmation, :nickname, :family_name, :given_name, :family_name_kana, :given_name_kana, :birthday, :phone_number, :intro)
+  end
+
+  def shipment_params
+    params.require(:shipment).permit(:family_name, :given_name, :family_name_kana, :given_name_kana, :postal_code, :prefecture, :city, :house_number, :building_name, :room_number, :phone_number)
   end
 end

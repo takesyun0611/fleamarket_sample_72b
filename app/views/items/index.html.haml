@@ -17,12 +17,20 @@
         = link_to "#" do
           ブランド
     %ul.top-navi__right
-      %li.top-navi__right--first<
-        = link_to new_user_registration_path do
-          新規会員登録
-      %li.top-navi__right--second<
-        = link_to "#" do
-          ログイン
+      - if user_signed_in?
+        %li.top-navi__right--first<
+          = link_to destroy_user_session_path, method: :delete do
+            ログアウト
+        %li.top-navi__right--second<
+          = link_to "#" do
+            = current_user.nickname
+      - else
+        %li.top-navi__right--first<
+          = link_to new_user_registration_path do
+            新規会員登録
+        %li.top-navi__right--second<
+          = link_to new_user_session_path do
+            ログイン
 
 .main
   .main__top

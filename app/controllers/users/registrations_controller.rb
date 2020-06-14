@@ -12,26 +12,28 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     @user = User.new(sign_up_params)
-    unless @user.valid?
+    if @user.valid? == false
       render :new
+    else
+      session["devise.regist_data"] = {user: @user.attributes}
+      session["devise.regist_data"][:user]["password"] = params[:user][:password]
+      @shipment = @user.shipments.build
+      render :new_shipment
     end
-    session["devise.regist_data"] = {user: @user.attributes}
-    session["devise.regist_data"][:user]["password"] = params[:user][:password]
-    @shipment = @user.shipments.build
-    render :new_shipment
   end
 
   def create_shipment
     @user = User.new(session["devise.regist_data"]["user"])
     @shipment = Shipment.new(shipment_params)
-    unless @shipment.valid?
+    if @shipment.valid? == false
       render :new_shipment
+    else
+      @user.shipments.build(@shipment.attributes)
+      @user.save
+      session["devise.regist_data"]["user"].clear
+      sign_in(:user, @user)
+      redirect_to root_path
     end
-    @user.shipments.build(@shipment.attributes)
-    @user.save
-    session["devise.regist_data"]["user"].clear
-    sign_in(:user, @user)
-    redirect_to root_path
   end
 
   # GET /resource/edit

@@ -13,8 +13,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     @user = User.new(sign_up_params)
     unless @user.valid?
-      flash.now[:alert] = @user.errors.full_messages
-      render :new and return
+      render :new
     end
     session["devise.regist_data"] = {user: @user.attributes}
     session["devise.regist_data"][:user]["password"] = params[:user][:password]
@@ -26,8 +25,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.new(session["devise.regist_data"]["user"])
     @shipment = Shipment.new(shipment_params)
     unless @shipment.valid?
-      flash.now[:alert] = @shipment.errors.full_messages
-      render :new_shipment and return
+      render :new_shipment
     end
     @user.shipments.build(@shipment.attributes)
     @user.save

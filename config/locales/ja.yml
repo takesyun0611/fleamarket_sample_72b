@@ -1,0 +1,32 @@
+ja:
+  activerecord:
+    errors:
+      messages:
+        nickname: ニックネーム
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード（確認用）
+        family_name: 苗字(全角)
+        given_name: 名前（全角）
+        family_name_kana: 苗字カナ（全角）
+        given_name_kana: 名前カナ（全角）
+        birthday: 生年月日
+        phone_number: 電話番号
+        intro: 自己紹介
+    models:
+      user: ユーザー
+    attributes:
+      user:
+        nickname: ニックネーム
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード（確認用）
+        family_name: 苗字(全角)
+        given_name: 名前（全角）
+        family_name_kana: 苗字カナ（全角）
+        given_name_kana: 名前カナ（全角）
+        birthday: 生年月日
+        phone_number: 電話番号
+        intro: 自己紹介
+        
+        

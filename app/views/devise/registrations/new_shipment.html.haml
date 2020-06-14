@@ -1,0 +1,50 @@
+%h2 送付先情報登録
+= form_for @shipment do |f|
+  = render "devise/shared/error_messages", resource: @shipment
+  .field
+    = f.label :苗字
+    %br/
+    = f.text_field :family_name, value: "#{session["devise.regist_data"][:user]["family_name"]}"
+  .field
+    = f.label :名前
+    %br/
+    = f.text_field :given_name, value: "#{session["devise.regist_data"][:user]["given_name"]}"
+  .field
+    = f.label :苗字カナ
+    %br/
+    = f.text_field :family_name_kana, value: "#{session["devise.regist_data"][:user]["family_name_kana"]}"
+  .field
+    = f.label :名前カナ
+    %br/
+    = f.text_field :given_name_kana, value: "#{session["devise.regist_data"][:user]["given_name_kana"]}"
+  .field
+    = f.label :郵便番号
+    %br/
+    = f.text_field :postal_code
+  .field
+    = f.label :都道府県
+    %br/
+    = f.collection_select :prefecture, JpPrefecture::Prefecture.all, :name, :name
+  .field
+    = f.label :市区町村
+    %br/
+    = f.text_field :city
+  .field
+    = f.label :番地
+    %br/
+    = f.text_field :house_number
+  .field
+    = f.label :建物名
+    %br/
+    = f.text_field :building_name
+  .field
+    = f.label :部屋番号
+    %br/
+    = f.text_field :room_number
+  .field
+    = f.label :電話番号
+    %br/
+    = f.text_field :phone_number, value: "#{session["devise.regist_data"][:user]["phone_number"]}"
+  .actions
+    = f.submit "Sign up"
+= render "devise/shared/links"

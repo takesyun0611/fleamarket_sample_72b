@@ -30,7 +30,7 @@
 
   <div class="field">
     <%= f.label :都道府県 %><br />
-    <%= f.text_field :prefecture %>
+    <%= f.collection_select :prefecture, JpPrefecture::Prefecture.all, :code, :name %>
   </div>
 
   <div class="field">

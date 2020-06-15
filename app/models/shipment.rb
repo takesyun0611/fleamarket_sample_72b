@@ -12,8 +12,4 @@ class Shipment < ApplicationRecord
 
   include JpPrefecture
   jp_prefecture :prefecture, method_name: :pref
-
-  def prefecture_name
-    JpPrefecture::Prefecture.find(code: prefecture).try(:name)
-  end
 end

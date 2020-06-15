@@ -1,18 +1,5 @@
 ja:
   activerecord:
-    errors:
-      messages:
-        nickname: ニックネーム
-        email: メールアドレス
-        password: パスワード
-        password_confirmation: パスワード（確認用）
-        family_name: 苗字(全角)
-        given_name: 名前（全角）
-        family_name_kana: 苗字カナ（全角）
-        given_name_kana: 名前カナ（全角）
-        birthday: 生年月日
-        phone_number: 電話番号
-        intro: 自己紹介
     models:
       user: ユーザー
     attributes:
@@ -28,5 +15,15 @@ ja:
         birthday: 生年月日
         phone_number: 電話番号
         intro: 自己紹介
-        
-        
+      shipment:
+        family_name: 苗字(全角)
+        given_name: 名前（全角）
+        family_name_kana: 苗字カナ（全角）
+        given_name_kana: 名前カナ（全角）
+        postal_code: 郵便番号
+        prefecture: 都道府県
+        city: 市区町村
+        house_number: 番地
+        building_name: 建物名
+        room_number: 部屋番号
+        phone_number: 電話番号

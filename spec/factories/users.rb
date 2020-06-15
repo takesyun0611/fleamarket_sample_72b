@@ -10,8 +10,8 @@ FactoryBot.define do
     family_name_kana      {"ネコ"}
     given_name_kana       {"タロウ"}
     birthday              {"2020-1-1"}
-    phone_number          {"000000"}
-    intro                 {"にゃ！"}
+    phone_number          {""}
+    intro                 {""}
   end
 
 end

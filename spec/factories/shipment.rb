@@ -13,5 +13,4 @@ FactoryBot.define do
     room_number           {""}
     phone_number          {""}
   end
-
 end

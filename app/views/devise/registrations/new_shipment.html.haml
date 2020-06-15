@@ -7,33 +7,21 @@
         - @shipment.errors.full_messages.each do |message|
           %li= message
   .field
-    = f.label :苗字
+    = f.label :苗字（全角）
     %br/
-    - if session["devise.regist_data"][:user] != nil
-      = f.text_field :family_name, value: "#{session["devise.regist_data"][:user]["family_name"]}"
-    - else
-      = f.text_field :family_name, value: "#{session["devise.regist_data"]["user"]["family_name"]}"
+    = f.text_field :family_name, value: "#{session["devise.regist_data"][:user]["family_name"]}"
   .field
-    = f.label :名前
+    = f.label :名前（全角）
     %br/
-    - if session["devise.regist_data"][:user] != nil
-      = f.text_field :family_name, value: "#{session["devise.regist_data"][:user]["given_name"]}"
-    - else
-      = f.text_field :family_name, value: "#{session["devise.regist_data"]["user"]["given_name"]}"
+    = f.text_field :given_name, value: "#{session["devise.regist_data"][:user]["given_name"]}"
   .field
-    = f.label :苗字カナ
+    = f.label :苗字カナ（全角）
     %br/
-    - if session["devise.regist_data"][:user] != nil
-      = f.text_field :family_name, value: "#{session["devise.regist_data"][:user]["family_name_kana"]}"
-    - else
-      = f.text_field :family_name, value: "#{session["devise.regist_data"]["user"]["family_name_kana"]}"
+    = f.text_field :family_name_kana, value: "#{session["devise.regist_data"][:user]["family_name_kana"]}"
   .field
-    = f.label :名前カナ
+    = f.label :名前カナ（全角）
     %br/
-    - if session["devise.regist_data"][:user] != nil
-      = f.text_field :family_name, value: "#{session["devise.regist_data"][:user]["given_name_kana"]}"
-    - else
-      = f.text_field :family_name, value: "#{session["devise.regist_data"]["user"]["given_name_kana"]}"
+    = f.text_field :given_name_kana, value: "#{session["devise.regist_data"][:user]["given_name_kana"]}"
   .field
     = f.label :郵便番号
     %br/
@@ -61,10 +49,7 @@
   .field
     = f.label :電話番号
     %br/
-    - if session["devise.regist_data"][:user] != nil
-      = f.text_field :family_name, value: "#{session["devise.regist_data"][:user]["phone_number"]}"
-    - else
-      = f.text_field :family_name, value: "#{session["devise.regist_data"]["user"]["phone_number"]}"
+    = f.text_field :phone_number, value: "#{session["devise.regist_data"][:user]["phone_number"]}"
   .actions
     = f.submit "Sign up"
 = render "devise/shared/links"

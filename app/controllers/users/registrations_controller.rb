@@ -26,6 +26,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.new(session["devise.regist_data"]["user"])
     @shipment = Shipment.new(shipment_params)
     if @shipment.valid? == false
+      session["devise.regist_data"][:user] = session["devise.regist_data"]["user"]
       render :new_shipment
     else
       @user.shipments.build(@shipment.attributes)

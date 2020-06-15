@@ -2,6 +2,7 @@ class Shipment < ApplicationRecord
   belongs_to :user, optional: true
 
   validates :postal_code, presence: true
+  validates :prefecture, presence: true
   validates :city, presence: true
   validates :house_number, presence: true
   validates :family_name, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/ }

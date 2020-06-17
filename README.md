@@ -34,7 +34,7 @@
 |family_name_kana|string|null:false|
 |given_name_kana|string|null:false|
 |postal_code|string|null:false|
-|prefecture_id|integer|foreign_key:true|
+|prefecture|string|null:false|
 |city|string|null:false|
 |house_number|string|null:false|
 |building_name|string|
@@ -42,7 +42,6 @@
 |phone_number|string|
 ### Association
 - belongs_to :user
-- belongs_to :prefecture
 
 
 ## products
@@ -55,7 +54,7 @@
 |shipping_method_id|string|
 |date_of_ship_id|string|null:false|
 |price|integer|null:false|
-|prefecture_id|integer|foreign_key:true|
+|prefecture|string|null:false|
 |size|string|
 |user_id|integer|null:false, foreign_key:true|
 |brand_id|integer|foreign_key:true|
@@ -72,7 +71,6 @@
 - belongs_to :status
 - belongs_to :shipping_method
 - belongs_to :date_of_ship
-- belongs_to :prefecture
 
 
 ## pictures

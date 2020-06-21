@@ -1,0 +1,41 @@
+= form_for @product do |f|
+  -# = f.fields_for :pictures do |i|
+  -#   .dropzone-container.clearfix
+  -#     .dropzone-area
+  -#       = i.label :content, class: "dropzone-box", for: "upload-picture" do
+  -#         .input-area
+  -#           = i.file_field :content, multiple: true, name:'product_pictures[i][]', id: "upload-picture", class: "upload-picture", 'date-picture': 0
+  -#   %br
+  %div#picture-box
+    = f.fields_for :pictures do |picture|
+      %div.js-file_group{data: {index: "= picture.index"}}
+        = picture.file_field :src, class: 'js-file'
+        %br
+        %span.js-remove
+          削除
+
+  商品名
+  = f.text_field :name
+  %br
+  商品の説明
+  = f.text_field :description
+  %br
+  カテゴリー
+  %br
+  サイズ
+  %br
+  ブランド
+  %br
+  商品の状態
+  %br
+  配送料の負担
+  %br
+  配送の方法
+  %br
+  発送元の地域
+  %br
+  発送までの日数
+  %br
+  販売価格
+  %br
+  = f.submit "出品する"

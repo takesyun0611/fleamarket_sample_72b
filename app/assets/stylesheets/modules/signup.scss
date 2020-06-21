@@ -72,6 +72,8 @@
           &__introduction{
             height: 100px;
             width: 100%;
+            border-radius: 4px;
+              border: 1px solid #ccc;
           }
           select{
             height: 48px;
@@ -79,12 +81,6 @@
             width: 76px;
             border: 1px solid #ccc;
             border-radius: 4px;
-          }
-        }
-        .field-password{
-          &__info-text{
-            margin: 8px 0 0;
-            color: #888;
           }
           em{
             font-weight: 600;

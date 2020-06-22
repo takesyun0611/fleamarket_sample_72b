@@ -1,4 +1,4 @@
-.signup-page{
+.shipment-page{
   &__main{
     background-color: #f8f8f8;
     font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
@@ -69,38 +69,17 @@
               height: 48px;
             }
           }
-          &__introduction{
-            height: 100px;
-            width: 100%;
-            border-radius: 4px;
-              border: 1px solid #ccc;
-          }
           select{
             height: 48px;
             padding: 0 10px;
-            width: 76px;
+            width: 150px;
             border: 1px solid #ccc;
             border-radius: 4px;
+            cursor: pointer;
           }
-          em{
-            font-weight: 600;
-          }
-        }
-        .identification{
-          &__head{
-            font-size: 16px;
-            font-weight: 600;
-          }
-          &__text{
-            margin-top: 8px;
-          }
-        }
-        &__info-text{
-          margin-top: 8px;
-          color: #888;
         }
         .actions{
-          .next-btn{
+          .complete-btn{
             display: block;
             margin-top: 24px;
             background-color: #ea352d;
@@ -109,6 +88,7 @@
             color: #fff;
             line-height: 48px;
              width: 100%;
+             cursor: pointer;
           }
         }
       }

@@ -1,0 +1,29 @@
+.login-page__main
+  .no-account
+    %p アカウントをお持ちでない方はこちら
+    = render "devise/shared/links"
+  .sns-login
+    =link_to "#", class: "sns-login__btn sns-login__btn--google" do
+      = icon('fab', 'google', class:"sns-login__btn--icon")
+      Googleでログイン
+    =link_to "#", class: "sns-login__btn sns-login__btn--facebook" do
+      = icon('fab', 'facebook-square', class:"sns-login__btn--icon")
+      Facebookでログイン
+    =link_to "#", class: "sns-login__btn sns-login__btn--apple" do
+      = icon('fab', 'apple', class:"sns-login__btn--icon")
+      Appleでログイン
+  .login-page__main__form
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      .field
+        %br/
+        = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス",class:"input-box"
+      .field
+        %br/
+        = f.password_field :password, autocomplete: "current-password", placeholder: "パスワード",class:"input-box"
+      -# - if devise_mapping.rememberable?
+      -#   .field
+      -#     = f.check_box :remember_me
+      -#     = f.label :remember_me
+      .actions
+        = f.submit "ログイン",class:"login-btn"
+    = link_to "パスワードをお忘れの方", new_password_path(resource_name)

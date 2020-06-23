@@ -1,0 +1,85 @@
+.login-page{
+  text-align: center;
+  background-color: #f8f8f8;
+  font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+  &__main{
+    background-color: #fff;
+    width: 456px;
+    margin: 0 auto;
+    .no-account{
+      padding: 40px 60px;
+      font-size: 14px;
+    }
+    .no-account a{
+      display: block;
+      margin: 8px 0 0;
+      border-radius: 4px;
+      border: 1px solid #0099e8;
+      background-color: #0099e8;
+      color: #fff;
+      line-height: 40px;
+    }
+    .sns-login{
+      padding: 32px 64px;
+      font-size: 14px;
+      border-top:1px solid #f8f8f8 ;
+      &__btn{
+        display: block;
+        margin: 16px 0 0;
+        border-radius: 4px;
+        border: #979797 solid 1px;
+        line-height: 48px;
+        position: relative;
+        &--google{
+          color: #333;
+        }
+        &--facebook{
+          background: #385185;
+          color: #fff;
+        }
+        &--apple{
+          background-color: #000;
+          color: #fff;
+        }
+        &--icon{
+          position: absolute;
+          line-height: 48px;
+          left: 16px;
+          font-size: 20px;
+        }
+      }
+    }
+    &__form{
+      padding: 0 64px 32px;
+      .field{
+        .input-box{
+        height: 48px;
+        width: 100%;
+        padding: 10px 16px 8px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        line-height: 1.5;
+        font-size: 16px;
+        }
+      }
+      .actions{
+        .login-btn{
+          display: block;
+          margin-top: 24px;
+          background-color: #ea352d;
+          border: 1px solid #ea352d;
+          border-radius: 4px;
+          color: #fff;
+          line-height: 48px;
+           width: 100%;
+        }
+      }
+    }
+    &__form a{
+      display: block;
+      margin-top: 40px;
+      color: #0099e8;
+      font-size: 14px;
+    }
+  }
+}

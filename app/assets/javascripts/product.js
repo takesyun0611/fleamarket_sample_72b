@@ -7,7 +7,7 @@ $(function(){
     $('.actual-fee').prepend('¥')
     $('.actual-profit').html(profit)
     $('.actual-profit').prepend('¥')
-    $('price_calc').var(data)
+    $('#price_calc').var(data)
     if(profit == '') {
       $('.actual-profit').html('');
       $('.actual-fee').html('');

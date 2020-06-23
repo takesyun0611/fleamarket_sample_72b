@@ -13,13 +13,13 @@
 ActiveRecord::Schema.define(version: 2020_06_20_052725) do
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", null: false
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", null: false
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "ancestry"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2020_06_20_052725) do
   end
 
   create_table "pictures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "content", null: false
+    t.string "content"
     t.bigint "product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -35,12 +35,12 @@ ActiveRecord::Schema.define(version: 2020_06_20_052725) do
   end
 
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "description", null: false
+    t.string "name"
+    t.string "description"
     t.string "size"
     t.string "prefecture", null: false
-    t.integer "price", null: false
-    t.boolean "is_bought", null: false
+    t.integer "price"
+    t.boolean "is_bought"
     t.integer "date_of_ship_id"
     t.integer "delivery_fee_burden_id"
     t.integer "status_id"

@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+
   def index
     @products = Product.includes(:pictures).order('created_at DESC')
   end
@@ -10,11 +11,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    if @product.save
-      redirect_to root_path
-    else
-      render :new
-    end
+    @product.save
   end
 
   def edit
@@ -25,9 +22,11 @@ class ProductsController < ApplicationController
 
   def destroy
   end
+  
+  private
 
-  private 
   def product_params
-    params.require(:product).permit(:name, :price, pictures_attributes: [:content])
+    params.require(:product).permit(:name, :description, pictures_attributes: [:content])
   end
 end
+

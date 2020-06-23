@@ -1,4 +1,8 @@
-= product.name
-= product.price
-- product.pictures.each do |picture|
-  = image_tag picture.content.url
+出品しました
+.content-product
+  %p
+    = @product.name
+  %p
+    = @product.description
+  - @product.pictures.each do |picture|
+    = image_tag picture.content.url

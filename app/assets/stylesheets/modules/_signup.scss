@@ -75,16 +75,20 @@
             border-radius: 4px;
               border: 1px solid #ccc;
           }
-          select{
-            height: 48px;
-            padding: 0 10px;
-            width: 76px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            cursor: pointer;
-          }
-          em{
-            font-weight: 600;
+          &__birthday{
+            display: flex;
+            line-height: 48px;
+            select{
+              height: 48px;
+              padding: 0 10px;
+              width: 76px;
+              border: 1px solid #ccc;
+              border-radius: 4px;
+              cursor: pointer;
+            }
+            em{
+              font-weight: 600;
+            }
           }
         }
         .identification{

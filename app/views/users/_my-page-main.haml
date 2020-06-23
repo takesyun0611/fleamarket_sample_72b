@@ -68,6 +68,8 @@
           = image_tag 'pict/mypage-background.jpg', class: 'main-light__background'
           .main-light__user-icon
             = image_tag 'icon/member_photo_noimage_thumb.png', size: '50x50', alt: "アイコン画像", class: 'icon'
+          %p.user-name 
+            = current_user.nickname
           %p 評価0 出品数0
         .main-light-notice
           %ul.mypage-tab

@@ -104,9 +104,13 @@
 
   p {
     font-size: 15px;
-    padding-top: 80px;
+    padding-top: 100px;
     font-family: "Source Sans Pro", Helvetica, Arial, "游ゴシック体", "YuGothic", "メイリオ", "Meiryo", sans-serif;
     position: absolute;
+  }
+  .user-name {
+    padding: 80px;
+    font-size: 13px;
   }
 
   .main-light-notice {

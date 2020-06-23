@@ -1,0 +1,45 @@
+.account-page{
+  text-align: center;
+  background-color: #f8f8f8;
+  font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+  &__header{
+    height: 128px;
+    width: 100%;
+    padding-top: 40px;
+    &__logo img{
+      width: 185px;
+      height: 49px;
+    }
+    &__logo img:hover{
+      opacity: 0.5;
+    }
+  }
+
+  &__footer{
+    width: 456px;
+    height: 220px;
+    padding: 40px 0;
+    margin: 0 auto;
+    color:black;
+
+    &__list{
+      display: flex;
+      justify-content: space-between;
+      &--text{
+        margin-right: 10px;
+        font-size: 12px;
+        color: #333333;
+      }
+    }
+    &__logo{
+      margin-top: 40px;
+    }
+    &__logo img{
+      width: 185px;
+      height: 49px;
+    }
+    &__logo img:hover{
+      opacity: 0.5;
+    }
+  }
+}

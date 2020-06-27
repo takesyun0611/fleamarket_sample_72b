@@ -10,6 +10,17 @@ class Product < ApplicationRecord
   has_many :pictures
   accepts_nested_attributes_for :pictures, allow_destroy: true
 
+  validates :name, presence: true
+  validates :description, presence: true
+  validates :category, presence: true
+  validates :status, presence: true
+  validates :delivery_fee, presence: true
+  validates :shipping_method, presence: true
+  validates :prefecture, presence: true
+  validates :date_of_ship_id, presence: true
+  validates :sold_out, inclusion: { in: [true, false]}
+  validates :price, numericality: { greater_than: 299, less_than: 10000000, message: "で入力してください"}
+
   include JpPrefecture
   jp_prefecture :prefecture, method_name: :pref
 end

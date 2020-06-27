@@ -57,7 +57,7 @@
             %span.required 必須
           .details-category__boxes__select
             .details-category__boxes__select__box
-              = f.collection_select :category_id, Category.all, :id, :name, {include_blank: '選択してください'}, {class: 'aaa', id: 'bbb'}
+              = f.collection_select :category_id, @category_parents, :id, :name, {include_blank: '選択してください'}, {class: 'category_parent', id: 'category_parent'}
       .details-size
         .details-size__boxes
           .details-size__boxes__box

@@ -8,6 +8,9 @@ class ProductsController < ApplicationController
     @product = Product.new
     @product.pictures.new
     @product.build_brand
+
+    # 下記limitメソッドに親カテゴリの数を代入してくだいさい
+    @category_parents = Category.all.order("id ASC").limit(2)
   end
 
   def create
@@ -16,6 +19,14 @@ class ProductsController < ApplicationController
       redirect_to products_path
     else
       render :new
+    end
+  end
+
+  def searchChild
+    @children = Category.find(params[:id]).children
+    respond_to do |format|
+      format.html
+      format.json
     end
   end
 

@@ -1,0 +1,372 @@
+.product-create {
+  height: auto;
+  font-family: "Source Sans Pro", Helvetica, Arial, "游ゴシック体", "YuGothic", "メイリオ", "Meiryo", sans-serif;
+}
+
+.headline {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.required {
+  background-color: red;
+  color: white;
+  font-size: 13px;
+  font-weight: bold;
+  border-radius: 4px;
+  padding-right: 4px;
+  padding-left: 4px;
+  margin-left: 10px;
+}
+
+.any {
+  background-color: #bfbfbf;
+  color: white;
+  font-size: 13px;
+  font-weight: bold;
+  border-radius: 4px;
+  padding-right: 4px;
+  padding-left: 4px;
+  margin-left: 10px; 
+}
+
+.input {
+  height: 100%;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 0 16px;
+}
+
+select {
+  height: 48px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 0 16px;
+}
+
+hr {
+  height: 2px;
+  background-color: #ffffff;
+  width: 100%;
+  border: none;
+  margin: 0;
+}
+
+@media screen and (min-width:720px) {
+  //ヘッダー
+  .product-header {
+    height: 128px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &__logo {
+      &--img {
+        height: 60px;
+        width: auto;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  //フォーム
+  .product-form {
+    background-color: #f8f8f8;
+    width: 700px;
+    margin: 0 auto;
+    .product-form-images {
+      padding: 40px;
+      .images-box {
+        &__name {
+          display: flex;
+          height: 19px;
+          line-height: 19px;
+        }
+        &__remarks {
+          height: 19px;
+          font-size: 14px;
+          font-weight: lighter;
+          margin-top: 16px;
+          line-height: 19px;
+        }
+      }
+      .images-upload {
+        margin-top: 16px;
+        .images-upload-box {
+          height: auto;
+          border: 1px solid #ccc;
+          border-style: dashed;
+        }
+      }
+    }
+    .product-form-about {
+      padding: 40px;
+      .about-name {
+        &__box {
+          display: flex;
+          height: 19px;
+          line-height: 19px;
+        }
+        &__input {
+          margin-top: 16px;
+          height: 48px;
+        }
+      }
+      .about-description {
+        margin-top: 32px;
+        &__box {
+          display: flex;
+          height: 19px;
+          line-height: 19px;
+        }
+        &__input {
+          margin-top: 16px;
+          height: 156px;
+          padding-top: 13px;
+          padding-bottom: 13px;
+        }
+      }
+    }
+    .product-form-details {
+      padding: 40px;
+      .details-name {
+        color: rgb(136, 136, 136);
+        font-weight: bold;
+        font-size: 14px;
+      }
+      .details-category {
+        margin-top: 32px;
+        &__boxes {
+          &__box {
+            display: flex;
+            height: 19px;
+            line-height: 19px;
+          }
+          &__select {
+            margin-top: 16px;
+          }
+        }
+      }
+      .details-size {
+        margin-top: 32px;
+        &__boxes {
+          &__box {
+            display: flex;
+            height: 19px;
+            line-height: 19px;
+          }
+          &__select {
+            margin-top: 16px;
+            &__box {
+              height: 48px;
+            }
+          }
+        }
+      }
+      .details-brand {
+        margin-top: 32px;
+        &__boxes {
+          &__box {
+            display: flex;
+            height: 19px;
+            line-height: 19px;
+          }
+          &__select {
+            margin-top: 16px;
+            &__box {
+              height: 48px;
+            }
+          }
+        }
+      }
+      .details-status {
+        margin-top: 32px;
+        &__boxes {
+          &__box {
+            display: flex;
+            height: 19px;
+            line-height: 19px;
+          }
+          &__select {
+            margin-top: 16px;
+            &__box {
+              height: 48px;
+            }
+          }
+        }
+      }
+    }
+    .product-form-delivery {
+      padding: 40px;
+      .delivery-name {
+        color: rgb(136, 136, 136);
+        font-weight: bold;
+        font-size: 14px;
+      }
+      .delivery-fee {
+        margin-top: 32px;
+        &__boxes {
+          &__box {
+            display: flex;
+            height: 19px;
+            line-height: 19px;
+          }
+          &__select {
+            margin-top: 16px;
+            &__box {
+              height: 48px;
+            }
+          }
+        }
+      }
+      .delivery-method {
+        margin-top: 32px;
+        &__boxes {
+          &__box {
+            display: flex;
+            height: 19px;
+            line-height: 19px;
+          }
+          &__select {
+            margin-top: 16px;
+            &__box {
+              height: 48px;
+            }
+          }
+        }
+      }
+      .delivery-prefecture {
+        margin-top: 32px;
+        &__boxes {
+          &__box {
+            display: flex;
+            height: 19px;
+            line-height: 19px;
+          }
+          &__select {
+            margin-top: 16px;
+            &__box {
+              height: 48px;
+            }
+          }
+        }
+      }
+      .delivery-date {
+        margin-top: 32px;
+        &__boxes {
+          &__box {
+            display: flex;
+            height: 19px;
+            line-height: 19px;
+          }
+          &__select {
+            margin-top: 16px;
+            &__box {
+              height: 48px;
+            }
+          }
+        }
+      }
+    }
+    .product-form-price {
+      padding: 40px 40px 0;
+      .price-name {
+        color: rgb(136, 136, 136);
+        font-weight: bold;
+        font-size: 14px;
+      }
+      .price-boxes {
+        margin: 32px 0;
+        &__sell {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          height: 58px;
+          padding-bottom: 10px;
+          &__name {
+            display: flex;
+            height: 19px;
+            line-height: 19px;
+          }
+          &__input {
+            height: 48px;
+          }
+        }
+        &__fee {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          height: 68px;
+          padding: 10px 0;
+          font-size: 14px;
+        }
+        &__profit {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          height: 68px;
+          padding: 10px 0;
+          font-size: 14px;
+        }
+      }
+    }
+    .product-form-button {
+      width: 360px;
+      margin: 0px auto;
+      .send{
+        height: 48px;
+        width: 100%;
+        background-color: rgb(122, 228, 232);
+        border: 1px solid rgb(122, 228, 232);
+        border-radius: 8px;
+        color: #ffffff;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+      .button-back {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+      }
+    }
+    .product-form-note {
+      padding: 40px;
+      font-size: 12px;
+    }
+  }
+
+  //フッター
+  .product-footer {
+    height: 220px;
+    padding: 40px 0;
+    text-align: center;
+    &__box {
+      margin-bottom: 20px;
+      &__ul {
+        display: inline-block;
+        &__list {
+          display: inline-block;
+          margin: 16px 0px 0px 16px;
+          &--style {
+            font-size: 12px;
+            color: black
+          }
+        }
+      }
+    }
+    &__logo {
+      &__link {
+        &--img {
+          height: 60px;
+          filter: brightness(90%);
+        }
+      }
+    }
+    &__copyright {
+      font-size: 12px;
+    }
+  }
+}
+

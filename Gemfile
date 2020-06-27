@@ -83,3 +83,7 @@ gem 'jp_prefecture'
 gem 'rails-i18n'
 gem "carrierwave"
 gem 'fog-aws'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'active_hash'
+gem 'ancestry'

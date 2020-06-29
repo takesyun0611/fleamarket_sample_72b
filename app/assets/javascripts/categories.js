@@ -1,4 +1,4 @@
-$(function() {
+$(document).on('turbolinks:load', function() {
   function AppendCategory(category, child) {
     let html1 = `
     <div class="details-category__boxes__select">

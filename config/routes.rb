@@ -7,5 +7,8 @@ Rails.application.routes.draw do
     post 'shipments', to: 'users/registrations#create_shipment'
   end
   root 'items#index'
-  resources :users, only: :show
+  resources :products, only: [:index, :create]
+  resources :users, only: :show do
+    resources :cards, only: [:new, :create]
+  end
 end

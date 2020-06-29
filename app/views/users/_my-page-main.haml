@@ -48,7 +48,7 @@
               お届け先住所変更
         .side-bar__low__blocks
           %p.side-bar__low__blocks__text
-            = link_to "#" do
+            = link_to new_user_card_path(current_user) do
               支払い方法
         .side-bar__low__blocks
           %p.side-bar__low__blocks__text
@@ -93,3 +93,4 @@
           テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト
         .main-low-content
           テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト2
+        %script.payjp-button{"data-key" => "pk_test_708ffc844f526e3da0e233ed", "data-partial" => "true", "data-submit-text" => "トークンを作成する", :src => "https://checkout.pay.jp/", :type => "text/javascript"}

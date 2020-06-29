@@ -15,9 +15,8 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    if params[:product][:category_id] == ""
-      redirect_to new_product_path
-    elsif @product.save
+    @category_parents = Category.all.order("id ASC").limit(2)
+    if @product.save
       redirect_to products_path
     else
       render :new

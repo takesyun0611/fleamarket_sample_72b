@@ -7,19 +7,24 @@
           - @product.errors.full_messages.each do |message|
             %li= message
     %hr
-    #picture-box.product-form-images
+    .product-form-images
       .images-box
         .images-box__name
           %h1.headline 出品画像
           %span.required 必須
-      %p.images-box__remarks 最大10枚までアップロードできます
-      .images-upload
-        .images-box-upload
-          .images-box-upload-up
-            .images-box-upload-up__accommodation
-              .images-box-upload-up__accommodation__camera
-
-
+      %p.images-box__remarks 最5枚までアップロードできます
+      .post__drop__box__container
+        .prev-content
+        .label-content
+          %label{for: "product_pictures_attributes_0_content", class: "label-box", id: "label-box--0"}
+            %p.label-box__text-visible クリックしてファイルをアップロード
+        .hidden-content
+          = f.fields_for :pictures do |i|
+            = i.file_field :picture, class: "hidden-field"
+            %input{class:"hidden-field", type: "file", name: "product[pictures_attributes][1][content]", id: "product_pictures_attributes_1_content" }
+            %input{class:"hidden-field", type: "file", name: "product[pictures_attributes][2][content]", id: "product_pictures_attributes_2_content" }
+            %input{class:"hidden-field", type: "file", name: "product[pictures_attributes][3][content]", id: "product_pictures_attributes_3_content" }
+            %input{class:"hidden-field", type: "file", name: "product[pictures_attributes][4][content]", id: "product_pictures_attributes_4_content" }
 
     %hr
     .product-form-about

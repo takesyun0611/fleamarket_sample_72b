@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
-    @product.pictures.new
+    @product.pictures.build
     @product.build_brand
 
     # 下記limitメソッドに親カテゴリの数を代入してくだいさい
@@ -34,7 +34,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :description, :category_id, :size, :status_id, :delivery_fee_id, :shipping_method_id, :prefecture, :date_of_ship_id, :price, :sold_out, pictures_attributes: [:content, :_destroy, :id], brand_attributes: [:name]).merge(user_id: current_user.id)
+    params.require(:product).permit(:name, :description, :category_id, :size, :status_id, :delivery_fee_id, :shipping_method_id, :prefecture, :date_of_ship_id, :price, :sold_out, pictures_attributes: [:content], brand_attributes: [:name]).merge(user_id: current_user.id)
   end
 
 end

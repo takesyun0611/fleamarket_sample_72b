@@ -19,12 +19,11 @@
           %label{for: "product_pictures_attributes_0_content", class: "label-box", id: "label-box--0"}
             %p.label-box__text-visible クリックしてファイルをアップロード
         .hidden-content
-          = f.fields_for :pictures do |i|
-            = i.file_field :picture, class: "hidden-field"
-            %input{class:"hidden-field", type: "file", name: "product[pictures_attributes][1][content]", id: "product_pictures_attributes_1_content" }
-            %input{class:"hidden-field", type: "file", name: "product[pictures_attributes][2][content]", id: "product_pictures_attributes_2_content" }
-            %input{class:"hidden-field", type: "file", name: "product[pictures_attributes][3][content]", id: "product_pictures_attributes_3_content" }
-            %input{class:"hidden-field", type: "file", name: "product[pictures_attributes][4][content]", id: "product_pictures_attributes_4_content" }
+          %input{class:"hidden-field", type: "file", name: "product[pictures_attributes][0][content]", id: "product_pictures_attributes_0_content" }
+          %input{class:"hidden-field", type: "file", name: "product[pictures_attributes][1][content]", id: "product_pictures_attributes_1_content" }
+          %input{class:"hidden-field", type: "file", name: "product[pictures_attributes][2][content]", id: "product_pictures_attributes_2_content" }
+          %input{class:"hidden-field", type: "file", name: "product[pictures_attributes][3][content]", id: "product_pictures_attributes_3_content" }
+          %input{class:"hidden-field", type: "file", name: "product[pictures_attributes][4][content]", id: "product_pictures_attributes_4_content" }
 
     %hr
     .product-form-about

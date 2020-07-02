@@ -36,8 +36,8 @@ $(document).on('turbolinks:load', function(){
                       <img src="" alt="preview">
                     </div>
                     <div class="lower-box">
-                      <div class="update-box">
-                        <label class="edit_btn">編集</label>
+                      <div class="update-box"  id="edit_btn_${count}">
+                        <span>編集</span>
                       </div>
                       <div class="delete-box" id="delete_btn_${count}">
                         <span>削除</span>
@@ -120,6 +120,12 @@ $(document).on('turbolinks:load', function(){
         //削除された際に、空っぽになったfile_fieldをもう一度入力可能にする
         $('.label-box').attr({id: `label-box--${id}`,for: `product_pictures_attributes_${id}_content`});
       }
+    });
+
+    // 画像の編集
+    $(document).on('click', '.update-box', function() {
+      var id = $(this).attr('id').replace(/[^0-9]/g, '');
+      $(`#product_pictures_attributes_${id}_content`).click();
     });
   });
 })

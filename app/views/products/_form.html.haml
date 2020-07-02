@@ -18,7 +18,7 @@
         .label-content
           %label{for: "product_pictures_attributes_0_content", class: "label-box", id: "label-box--0"}
             %p.label-box__text-visible クリックしてファイルをアップロード
-        .hidden-content1
+        .hidden-content
           = f.fields_for :pictures do |picture|
             = picture.file_field :content, class: "hidden-field", id: "product_pictures_attributes_0_content", name: "product[pictures_attributes][0][content]"
             = picture.file_field :content, class: "hidden-field", id: "product_pictures_attributes_1_content", name: "product[pictures_attributes][1][content]"

@@ -4,7 +4,7 @@ class CardsController < ApplicationController
 
   def new # カードの登録画面。送信ボタンを押すとcreateアクションへ。
     card = Card.where(user_id: current_user.id).first
-    redirect_to action: "index" if card.present?
+    redirect_to edit_user_card_path(current_user) if card.present?
   end
 
  # indexアクションはここでは省略
@@ -15,7 +15,6 @@ class CardsController < ApplicationController
     Payjp.api_key = 'sk_test_94989bc4660d52fba7aa4d1e'
     # binding.pry
     if params['payjp-token'].blank?
-      # binding.pry
       redirect_to action: "new"
     else
       # トークンが正常に発行されていたら、顧客情報をPAY.JPに登録します。
@@ -36,6 +35,11 @@ class CardsController < ApplicationController
       end
     end
   end
+
+  def edit
+    @user = User.find(params[:id])
+  end
+
   private
 
   def set_card

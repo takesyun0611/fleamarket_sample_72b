@@ -1,4 +1,4 @@
-$(function() {
+$(document).on('turbolinks:load', function() {
 var form = $("#card__form");
   Payjp.setPublicKey("pk_test_708ffc844f526e3da0e233ed");
 //まずはテスト鍵をセットする↑

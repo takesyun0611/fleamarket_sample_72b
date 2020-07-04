@@ -10,10 +10,11 @@ class Product < ApplicationRecord
   has_many :pictures
   accepts_nested_attributes_for :pictures, allow_destroy: true
 
-  validates :pictures, presence: true
+  validates_associated :pictures
+  validates :pictures, presence: { message: "してください"}
   validates :name, presence: true
   validates :description, presence: true
-  validates :category_id, presence: true
+  validates :category, presence: true
   validates :status_id, presence: true
   validates :delivery_fee_id, presence: true
   validates :shipping_method_id, presence: true

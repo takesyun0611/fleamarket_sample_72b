@@ -31,11 +31,11 @@ ja:
       product:
         name: 商品名
         description: 商品の説明
-        category_id: カテゴリー
+        category: カテゴリー
         status_id: 商品の状態
         delivery_fee_id: 配送料の負担
         shipping_method_id: 配送の方法
         prefecture: 発送元の地域
         date_of_ship_id: 発送までの日数
         price: 300以上9999999以下
-        pictures: 画像を1枚以上
+        pictures: 画像を1枚以上アップロード

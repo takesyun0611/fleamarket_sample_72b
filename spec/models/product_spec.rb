@@ -19,7 +19,7 @@ describe Product do
     end
 
     it "カテゴリーを入力しないと登録できないこと" do
-      product = build(:product, category: "")
+      product = build(:product, category_id: "")
       product.valid?
       expect(product.errors[:category]).to include("を入力してください")
     end

@@ -7,4 +7,9 @@ Rails.application.routes.draw do
     post 'shipments', to: 'users/registrations#create_shipment'
   end
   root 'items#index'
+  resources :products, except: :show do
+    collection do
+      get :searchChild
+    end
+  end
 end

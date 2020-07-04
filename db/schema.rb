@@ -10,7 +10,54 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_13_034023) do
+ActiveRecord::Schema.define(version: 2020_06_25_100226) do
+
+  create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "ancestry"
+    t.index ["ancestry"], name: "index_categories_on_ancestry"
+  end
+
+  create_table "pictures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "content"
+    t.bigint "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_pictures_on_product_id"
+  end
+
+  create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.bigint "category_id"
+    t.string "size"
+    t.bigint "brand_id"
+    t.bigint "status_id"
+    t.bigint "delivery_fee_id"
+    t.bigint "shipping_method_id"
+    t.string "prefecture"
+    t.bigint "date_of_ship_id"
+    t.integer "price"
+    t.boolean "sold_out", default: false, null: false
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["brand_id"], name: "index_products_on_brand_id"
+    t.index ["category_id"], name: "index_products_on_category_id"
+    t.index ["date_of_ship_id"], name: "index_products_on_date_of_ship_id"
+    t.index ["delivery_fee_id"], name: "index_products_on_delivery_fee_id"
+    t.index ["shipping_method_id"], name: "index_products_on_shipping_method_id"
+    t.index ["status_id"], name: "index_products_on_status_id"
+    t.index ["user_id"], name: "index_products_on_user_id"
+  end
 
   create_table "shipments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "family_name", null: false
@@ -51,5 +98,7 @@ ActiveRecord::Schema.define(version: 2020_06_13_034023) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "pictures", "products"
+  add_foreign_key "products", "users"
   add_foreign_key "shipments", "users"
 end

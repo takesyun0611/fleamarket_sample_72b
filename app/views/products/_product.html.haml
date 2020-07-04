@@ -1,0 +1,6 @@
+.content
+  = product.name
+  = product.description
+  - product.pictures.each do |picture|
+    = image_tag picture.content.url
+

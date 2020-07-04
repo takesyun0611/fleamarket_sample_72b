@@ -3,7 +3,7 @@ describe Product do
   describe '#create' do
     it "出品画像、商品名、商品の説明、カテゴリー、商品の状態、配送料の負担、配送の方法、発送元の地域、発送までの日数、商品の価格¥300~¥9,999,999が存在すれば登録できること" do
       product = build(:product)
-      expect(product).to be_vaild
+      expect(product).to be_valid
     end
     
     it "商品名がないと登録できないこと" do

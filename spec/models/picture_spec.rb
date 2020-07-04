@@ -1,5 +1,10 @@
 require 'rails_helper'
-
-RSpec.describe Picture, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe Picture do
+  describe '#create' do
+    it "商品画像が1枚以上アップロードされていないと登録できないこと" do
+      picture = build(:picture, content: '')
+      picture.valid?
+      expect(picture.errors[:content]).to include{"をアップロードしてください"}
+    end
+  end
 end

@@ -12,10 +12,9 @@ FactoryBot.define do
     prefecture            {"東京都"}
     date_of_ship_id       {"1"}
     price                 {"999"}
-    association :user
 
     after(:build) do |product|
-      product.pictures << FactoryBot.build(:picture, product: product)
+      product.pictures << FactoryBot.build(:picture)
     end
   end
 

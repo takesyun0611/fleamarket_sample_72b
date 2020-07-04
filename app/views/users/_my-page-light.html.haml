@@ -1,0 +1,32 @@
+.main-light
+  .main-light__high
+    .main-light__back
+      = image_tag 'pict/mypage-background.jpg', class: 'main-light__background'
+      .main-light__user-icon
+        = image_tag 'icon/member_photo_noimage_thumb.png', size: '50x50', alt: "アイコン画像", class: 'icon'
+      %p.user-name 
+        = current_user.nickname
+      %p 評価0 出品数0
+    .main-light-notice
+      %ul.mypage-tab
+        .menu.active
+          お知らせ
+        .menu
+          やることリスト
+      .mypage-content.show
+        テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト
+      .mypage-content
+        テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト2
+  .main-light-low
+    .mypage-menu
+      購入した商品
+    .main-low-tab
+      .main-low-menu.active2
+        取引中
+      .main-low-menu
+        過去の取引
+    .main-low-content.show2
+      テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト
+    .main-low-content
+      テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト2
+    %script.payjp-button{"data-key" => "pk_test_708ffc844f526e3da0e233ed", "data-partial" => "true", "data-submit-text" => "トークンを作成する", :src => "https://checkout.pay.jp/", :type => "text/javascript"}

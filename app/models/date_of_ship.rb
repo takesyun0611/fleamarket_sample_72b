@@ -4,4 +4,7 @@ class DateOfShip < ActiveHash::Base
     {id: 2, date_of_ship: '2日~3日で発送'},
     {id: 3, date_of_ship: '4日~７日で発送'}
   ]
+
+  include ActiveHash::Associations
+  has_many :products
 end

@@ -1,4 +1,8 @@
-.wrapper
- = render "items/header"
- = render "users/side-bar"
- = render "users/my-page-bottom"
+-# .wrapper
+-#  = render "items/header"
+-#  = render "users/side-bar"
+-#  = render "users/my-page-bottom"
+
+.delete
+  = link_to user_card_path(current_user), method: :delete do
+    削除する

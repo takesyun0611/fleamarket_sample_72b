@@ -23,6 +23,12 @@ class ProductsController < ApplicationController
     end
   end
 
+  def show
+    @product = Product.find(params[:id])
+    @seller = @product.user
+    @category = @product.category
+  end
+
   def searchChild
     @children = Category.find(params[:id]).children
     respond_to do |format|

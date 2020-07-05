@@ -1,0 +1,17 @@
+= @product.name
+= image_tag @product.pictures[0].content.url
+- @product.pictures.each do |picture|
+  = image_tag picture.content.url
+= @product.price
+= @product.description
+
+= @seller.nickname
+= @category.parent.parent.name
+= @category.parent.name
+= @category.name
+= @product.brand.name
+= @product.status[:status]
+= @product.delivery_fee[:delivery_fee]
+= @product.shipping_method[:shipping_method]
+= @product.prefecture
+= DateOfShip.find(@product.date_of_ship_id)[:date_of_ship]

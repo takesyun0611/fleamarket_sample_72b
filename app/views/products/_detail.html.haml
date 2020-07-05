@@ -1,17 +1,28 @@
-= @product.name
-= image_tag @product.pictures[0].content.url
-- @product.pictures.each do |picture|
-  = image_tag picture.content.url
-= @product.price
-= @product.description
+.main
+  .showProduct
+    .showProduct--info
+      .showProduct--info__name
+        = @product.name
+      .showProduct--info__photo
+        %ul
+          %li
+            = image_tag @product.pictures[0].content.url, class: "photoLarge"
+            %li.showProduct--info__photo__smallPhotos
+              - @product.pictures.each do |picture|
+                = image_tag picture.content.url, class: "photoSmall"
+      = @product.price
+      = @product.description
 
-= @seller.nickname
-= @category.parent.parent.name
-= @category.parent.name
-= @category.name
-= @product.brand.name
-= @product.status[:status]
-= @product.delivery_fee[:delivery_fee]
-= @product.shipping_method[:shipping_method]
-= @product.prefecture
-= DateOfShip.find(@product.date_of_ship_id)[:date_of_ship]
+      = @seller.nickname
+      = @category.parent.parent.name
+      = @category.parent.name
+      = @category.name
+      = @product.brand.name
+      = @product.status[:status]
+      = @product.delivery_fee[:delivery_fee]
+      = @product.shipping_method[:shipping_method]
+      = @product.prefecture
+      = DateOfShip.find(@product.date_of_ship_id)[:date_of_ship]
+    .showProduct--comment
+    .showProduct--links
+    .showProduct--related

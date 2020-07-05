@@ -467,6 +467,7 @@ hr {
   margin: 0 auto;
   border-top: 1px solid #eee;
   box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+  position: relative;
   &--routine {
     padding: 17px 0 16px;
     display: flex;
@@ -481,6 +482,46 @@ hr {
       }
       margin-right: 10px;
       font-size: 14px;
+    }
+  }
+}
+
+.showProduct {
+  padding: 40px;
+  
+  &--info {
+    background-color: #fff;
+    padding: 24px 40px 40px;
+    width: 700px;
+    margin: 0 auto;
+    &__name {
+      text-align: center;
+      font-weight: bold;
+      font-size: 24px;
+    }
+    &__photo {
+      margin: 16px 0 0;
+      ul {
+        display: flex;
+        flex-direction: column;
+        width: 560px;
+        align-items: center;
+        margin: 0 auto;
+        .photoLarge {
+          object-fit: cover;
+          height: 346px;
+        }
+        .photoSmall {
+          object-fit: cover;
+          height: 87px;
+          margin: 0 10px 0 0;
+        }
+      }
+      &__smallPhotos {
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+      }
     }
   }
 }

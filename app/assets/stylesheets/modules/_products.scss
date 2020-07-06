@@ -523,5 +523,20 @@ hr {
         margin-top: 10px;
       }
     }
+    &__price {
+      margin: 24px 0 24px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      &__number {
+        font-size: 46px;
+        font-weight: bold;
+        margin: 0 10px 0 0;
+      }
+      &__tax {
+        font-size: 16px;
+        text-align: center;
+      }
+    }
   }
 }

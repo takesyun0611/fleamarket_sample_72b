@@ -10,7 +10,13 @@
             %li.showProduct--info__photo__smallPhotos
               - @product.pictures.each do |picture|
                 = image_tag picture.content.url, class: "photoSmall"
-      = @product.price
+      .showProduct--info__price
+        .showProduct--info__price__number
+          ¥#{@product.price}
+        .showProduct--info__price__tax
+          (税込) 
+          - if @product.delivery_fee[:delivery_fee] == "送料込み（出品者負担）"
+            送料込み
       = @product.description
 
       = @seller.nickname

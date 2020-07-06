@@ -26,4 +26,17 @@ class Product < ApplicationRecord
 
   include JpPrefecture
   jp_prefecture :prefecture, method_name: :pref
+
+  def relateProducts(params)
+    grandsonCategories = self.category.parent.parent.indirects
+    results = []
+    grandsonCategories.each do |category|
+      category.products.each do |product|
+        if product.id.to_i != params[:id].to_i
+          results << product
+        end
+      end
+    end
+    return results
+  end
 end

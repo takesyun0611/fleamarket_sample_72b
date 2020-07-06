@@ -488,7 +488,8 @@ hr {
 
 .showProduct {
   padding: 40px;
-  
+  width: 700px;
+  margin: 0 auto;
   &--info {
     background-color: #fff;
     padding: 24px 40px 40px;
@@ -640,11 +641,13 @@ hr {
       font-size: 18px;
       border-radius: 100px;
       margin-top: 10px;
+      .hidden {
+        display: none;
+      }
     }
   }
   &--links {
     width: 700px;
-    margin: 0 auto;
     a {
       text-decoration: none;
       color: #3CCACE;
@@ -654,6 +657,65 @@ hr {
     }
     &__right {
       float: right;
+    }
+  }
+  &--related {
+    clear: left;
+    display: block;
+    margin-top: 48px;
+    margin-bottom: 8px;
+    .moreRelate {
+      color: #3CCACE;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 22px;
+    }
+  }
+  &--relateProducts {
+    width: 233px;
+  }
+}
+
+.productBox:hover {
+  opacity: 0.5;
+}
+
+.productBox {
+  width: 233px;
+  height: 277px;
+  margin-bottom: 10px;
+  &--img {
+    width: 233px;
+    height: 150px;
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    z-index: auto;
+    img {
+      object-fit: cover;
+      width: 233px;
+    }
+  }
+  &--body {
+    background-color: white;
+    color: #333;
+    padding: 16px;
+    .name {
+      overflow: hidden;
+      line-height: 1.5;
+      font-size: 16px;
+      text-align: left;
+    }
+    &__details {
+      ul {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-weight: bold;
+      }
+      p {
+        font-size: 10px;
+      }
     }
   }
 }

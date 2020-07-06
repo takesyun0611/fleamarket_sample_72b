@@ -91,7 +91,7 @@
           = f.label :comment_submit, class: 'comment_submit', for: 'comment_submit' do
             = icon('fas', 'comment')
             &nbsp;コメントする
-            -# = f.submit :comment_submit, class: 'hidden', id: 'comment_submit'
+            = f.submit :comment_submit, class: 'hidden', id: 'comment_submit'
     .showProduct--links
       .showProduct--links__left
         = link_to "#" do
@@ -102,3 +102,10 @@
           = icon('fas', 'angle-right')
           後ろの商品
     .showProduct--related
+      = link_to "#", class: 'moreRelate' do
+        #{@category.parent.parent.name}
+        をもっと見る
+    .showProduct--relateProducts
+      - if @relateProducts[0] != nil
+        = render partial: "productBox", locals: { product: @relateProducts[0] }
+

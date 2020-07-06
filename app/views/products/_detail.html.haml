@@ -19,17 +19,60 @@
             送料込み
       .showProduct--info__description
         = @product.description
-
-      = @seller.nickname
-      = @category.parent.parent.name
-      = @category.parent.name
-      = @category.name
-      = @product.brand.name
-      = @product.status[:status]
-      = @product.delivery_fee[:delivery_fee]
-      = @product.shipping_method[:shipping_method]
-      = @product.prefecture
-      = DateOfShip.find(@product.date_of_ship_id)[:date_of_ship]
+      .showProduct--info__table
+        %table
+          %tr
+            %th
+              出品者
+            %td
+              = @seller.nickname
+          %tr
+            %th
+              カテゴリー
+            %td
+              = link_to "#" do
+                = @category.parent.parent.name
+              %br/
+              = link_to "#" do
+                = @category.parent.name
+              %br/
+              = link_to "#" do
+                = @category.name
+          %tr
+            %th
+              ブランド
+            %td
+              = @product.brand.name
+          %tr
+            %th
+              商品のサイズ
+            %td
+          %tr
+            %th
+              商品の状態
+            %td
+              = @product.status[:status]
+          %tr
+            %th
+              配送料の負担
+            %td
+              = @product.delivery_fee[:delivery_fee]
+          %tr
+            %th
+              配送の方法
+            %td
+              = @product.shipping_method[:shipping_method]
+          %tr
+            %th
+              発送元の地域
+            %td
+              = link_to "#" do
+                = @product.prefecture
+          %tr
+            %th
+              発送日の目安
+            %td
+              = DateOfShip.find(@product.date_of_ship_id)[:date_of_ship]
     .showProduct--comment
     .showProduct--links
     .showProduct--related

@@ -27,6 +27,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @seller = @product.user
     @category = @product.category
+    @comment = @product.comments.new
   end
 
   def searchChild

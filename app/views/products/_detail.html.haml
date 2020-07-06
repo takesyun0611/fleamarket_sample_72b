@@ -81,5 +81,11 @@
           = icon('fas', 'flag')
           &nbsp;不適切な商品の通報
     .showProduct--comment
+      = form_for @comment, url: product_comments_path(product_id: params[:id]) do |f|
+        = f.text_area :content, class: 'comment-content', required: 'required'
+        = f.label :comment_submit, for: 'comment_submit' do
+          = icon('fas', 'comment')
+          &nbsp;コメントする
+          = f.submit :comment_submit, class: 'hidden', id: 'comment_submit'
     .showProduct--links
     .showProduct--related

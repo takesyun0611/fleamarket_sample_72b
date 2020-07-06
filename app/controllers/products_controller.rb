@@ -1,23 +1,40 @@
 class ProductsController < ApplicationController
-  require 'payjp'
-  # before_action :product_params
 
   def index
+    @products = Product.includes(:pictures).order('created_at DESC')
+  end
+
+  def new
+    @product = Product.new
+    @product.pictures.build
+    @product.build_brand
+
+    # 下記limitメソッドに親カテゴリの数を代入してくだいさい
+    @category_parents = Category.all.order("id ASC").limit(2)
   end
 
   def create
-    @product = Product.find(params[:id])
-    binding.pry
-    Payjp.api_key = ENV['PAYJP_ACCESS_KEY']
-    charge = Payjp::Charge.create(
-    amount: @product.price,
-    card: params['payjp-token'],
-    currency: 'jpy'
-    )
+    @product = Product.new(product_params)
+    @category_parents = Category.all.order("id ASC").limit(2)
+    if @product.save
+      redirect_to products_path
+    else
+      render :new
+    end
   end
+
+  def searchChild
+    @children = Category.find(params[:id]).children
+    respond_to do |format|
+      format.html
+      format.json
+    end
+  end
+
   private
 
   def product_params
-    params.require(:item).permit(:price).merge(user_id: current_user.id)
+    params.require(:product).permit(:name, :description, :category_id, :size, :brand_id, :status_id, :delivery_fee_id, :shipping_method_id, :prefecture, :date_of_ship_id, :price, :sold_out, pictures_attributes: [:content], brand_attributes: [:name]).merge(user_id: current_user.id)
   end
+
 end

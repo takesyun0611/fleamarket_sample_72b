@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_28_074857) do
+ActiveRecord::Schema.define(version: 2020_06_27_053557) do
+
+  create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -21,22 +27,45 @@ ActiveRecord::Schema.define(version: 2020_06_28_074857) do
     t.index ["user_id"], name: "index_cards_on_user_id"
   end
 
+  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "ancestry"
+    t.index ["ancestry"], name: "index_categories_on_ancestry"
+  end
+
+  create_table "pictures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "content"
+    t.bigint "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_pictures_on_product_id"
+  end
+
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.string "delivery_fee"
-    t.string "status_id"
-    t.string "shipping_method_id"
-    t.string "date_of_ship_id"
-    t.integer "price"
-    t.integer "prefecture_id"
+    t.bigint "category_id"
     t.string "size"
-    t.integer "user_id"
-    t.integer "brand_id"
-    t.integer "category_id"
-    t.boolean "is_bought"
+    t.bigint "brand_id"
+    t.bigint "status_id"
+    t.bigint "delivery_fee_id"
+    t.bigint "shipping_method_id"
+    t.string "prefecture"
+    t.bigint "date_of_ship_id"
+    t.integer "price"
+    t.boolean "sold_out", default: false, null: false
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["brand_id"], name: "index_products_on_brand_id"
+    t.index ["category_id"], name: "index_products_on_category_id"
+    t.index ["date_of_ship_id"], name: "index_products_on_date_of_ship_id"
+    t.index ["delivery_fee_id"], name: "index_products_on_delivery_fee_id"
+    t.index ["shipping_method_id"], name: "index_products_on_shipping_method_id"
+    t.index ["status_id"], name: "index_products_on_status_id"
+    t.index ["user_id"], name: "index_products_on_user_id"
   end
 
   create_table "shipments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -79,5 +108,7 @@ ActiveRecord::Schema.define(version: 2020_06_28_074857) do
   end
 
   add_foreign_key "cards", "users"
+  add_foreign_key "pictures", "products"
+  add_foreign_key "products", "users"
   add_foreign_key "shipments", "users"
 end

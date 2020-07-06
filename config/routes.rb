@@ -11,4 +11,9 @@ Rails.application.routes.draw do
   resources :users, only: :show do
     resources :cards, only: [:new, :create, :edit]
   end
+  resources :products, except: :show do
+    collection do
+      get :searchChild
+    end
+  end
 end

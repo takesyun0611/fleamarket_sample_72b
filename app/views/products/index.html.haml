@@ -1,2 +1,6 @@
 = form_tag(action: :create, method: :post) do
   %script.payjp-button{"data-key" => "pk_test_708ffc844f526e3da0e233ed", "data-partial" => "true", "data-submit-text" => "トークンを作成する", :src => "https://checkout.pay.jp/", :type => "text/javascript"}
+= link_to '出品', new_product_path
+%br/
+.contents
+  = render @products

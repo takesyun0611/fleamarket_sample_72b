@@ -83,9 +83,14 @@
     .showProduct--comment
       = form_for @comment, url: product_comments_path(product_id: params[:id]) do |f|
         = f.text_area :content, class: 'comment-content', required: 'required'
-        = f.label :comment_submit, for: 'comment_submit' do
-          = icon('fas', 'comment')
-          &nbsp;コメントする
-          = f.submit :comment_submit, class: 'hidden', id: 'comment_submit'
+        .showProduct--comment__notice
+          相手のことを考え丁寧なコメントを心がけましょう。
+          %br/
+          不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        %button
+          = f.label :comment_submit, class: 'comment_submit', for: 'comment_submit' do
+            = icon('fas', 'comment')
+            &nbsp;コメントする
+            -# = f.submit :comment_submit, class: 'hidden', id: 'comment_submit'
     .showProduct--links
     .showProduct--related

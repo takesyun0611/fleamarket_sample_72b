@@ -17,7 +17,8 @@
           (税込) 
           - if @product.delivery_fee[:delivery_fee] == "送料込み（出品者負担）"
             送料込み
-      = @product.description
+      .showProduct--info__description
+        = @product.description
 
       = @seller.nickname
       = @category.parent.parent.name

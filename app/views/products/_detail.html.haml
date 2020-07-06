@@ -93,4 +93,12 @@
             &nbsp;コメントする
             -# = f.submit :comment_submit, class: 'hidden', id: 'comment_submit'
     .showProduct--links
+      .showProduct--links__left
+        = link_to "#" do
+          = icon('fas', 'angle-left')
+          前の商品
+      .showProduct--links__right
+        = link_to "#" do
+          = icon('fas', 'angle-right')
+          後ろの商品
     .showProduct--related

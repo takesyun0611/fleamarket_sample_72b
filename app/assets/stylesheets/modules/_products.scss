@@ -642,4 +642,18 @@ hr {
       margin-top: 10px;
     }
   }
+  &--links {
+    width: 700px;
+    margin: 0 auto;
+    a {
+      text-decoration: none;
+      color: #3CCACE;
+    }
+    &__left {
+      float: left;
+    }
+    &__right {
+      float: right;
+    }
+  }
 }

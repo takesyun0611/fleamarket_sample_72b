@@ -17,10 +17,18 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     @category_parents = Category.all.order("id ASC").limit(2)
     if @product.save
-      redirect_to products_path
+      redirect_to product_path(id: @product.id)
     else
       render :new
     end
+  end
+
+  def show
+    @product = Product.find(params[:id])
+    @seller = @product.user
+    @category = @product.category
+    @comment = @product.comments.new
+    @relateProducts = @product.relateProducts(params)
   end
 
   def searchChild

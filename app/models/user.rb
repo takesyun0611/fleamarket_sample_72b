@@ -7,6 +7,7 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   has_many :shipments
   has_many :products
+  has_many :comments
 
   validates :nickname, presence: true
   validates :birthday, presence: true

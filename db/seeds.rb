@@ -5,3 +5,5 @@ melodic.children.create([{name: "melodic-death"}, {name: "melodic-speed"}])
 black.children.create([{name: "symphonic-black"}, {name: "melodic-black"}])
 
 swing, modern = jazz.children.create([{name: "swing"}, {name: "modern"}])
+swing.children.create([{name: "melodic-death"}, {name: "melodic-speed"}])
+modern.children.create([{name: "symphonic-black"}, {name: "melodic-black"}])

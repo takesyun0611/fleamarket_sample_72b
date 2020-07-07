@@ -10,12 +10,12 @@ class ProductsController < ApplicationController
     @product.build_brand
 
     # 下記limitメソッドに親カテゴリの数を代入してくだいさい
-    @category_parents = Category.all.order("id ASC").limit(2)
+    @category_parents = Category.all.order("id ASC").limit(13)
   end
 
   def create
     @product = Product.new(product_params)
-    @category_parents = Category.all.order("id ASC").limit(2)
+    @category_parents = Category.all.order("id ASC").limit(13)
     if @product.save
       redirect_to product_path(id: @product.id)
     else

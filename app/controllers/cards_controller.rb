@@ -15,7 +15,7 @@ class CardsController < ApplicationController
     Payjp.api_key = 'sk_test_94989bc4660d52fba7aa4d1e'
     # binding.pry
     if params['payjp-token'].blank?
-      redirect_to action: "new"
+      redirect_to root_path
     else
       # トークンが正常に発行されていたら、顧客情報をPAY.JPに登録します。
       customer = Payjp::Customer.create(
@@ -31,20 +31,21 @@ class CardsController < ApplicationController
       if @card.save
         redirect_to root_path
       else
-        redirect_to action: "create"
+        redirect_to new_user_card_path(current_user)
       end
     end
   end
 
   def show
+    @user = User.find(params[:id])
     # ログイン中のユーザーのクレジットカード登録の有無を判断
-    @card = CreditCard.find_by(user_id: current_user.id)
+    # @card = CreditCard.find_by(user_id: current_user.id)
     if @card.blank?
       # 未登録なら新規登録画面に
       redirect_to action: "new" 
     else
       # 前前回credentials.yml.encに記載したAPI秘密鍵を呼び出します。
-      Payjp.api_key = Rails.application.credentials.dig(:payjp, 'sk_test_94989bc4660d52fba7aa4d1e')
+      Payjp.api_key = "sk_test_94989bc4660d52fba7aa4d1e"
       # ログインユーザーのクレジットカード情報からPay.jpに登録されているカスタマー情報を引き出す
       customer = Payjp::Customer.retrieve(@card.customer_id)
       # カスタマー情報からカードの情報を引き出す
@@ -56,17 +57,17 @@ class CardsController < ApplicationController
       when "Visa"
         # 例えば、Pay.jpからとってきたカード情報の、ブランドが"Visa"だった場合は返り値として
         # (画像として登録されている)Visa.pngを返す
-        @card_src = "visa.png"
+        @card_src = "card-icon/visa.png"
       when "JCB"
-        @card_src = "jcb.png"
+        @card_src = "card-icon/jcb.png"
       when "MasterCard"
-        @card_src = "master.png"
+        @card_src = "card-icon/mastercard.png"
       when "American Express"
-        @card_src = "amex.png"
+        @card_src = "card-icon/americanExpress.png"
       when "Diners Club"
-        @card_src = "diners.png"
+        @card_src = "card-icon/dinersClub.png"
       when "Discover"
-        @card_src = "discover.png"
+        @card_src = "card-icon/discover.png"
       end
 
       #  viewの記述を簡略化

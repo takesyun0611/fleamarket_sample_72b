@@ -62,5 +62,5 @@
           本人情報
     .side-bar__low__blocks
       %p.side-bar__low__blocks__text
-        = link_to "#" do
+        = link_to destroy_user_session_path, method: :delete do
           ログアウト

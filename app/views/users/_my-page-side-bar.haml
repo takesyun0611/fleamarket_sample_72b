@@ -47,7 +47,7 @@
     .side-bar__low__blocks
       %p.side-bar__low__blocks__text
         - if @user.cards.present?
-          = link_to edit_user_card_path(current_user) do
+          = link_to user_card_path(current_user) do
             支払い方法
         - else
           = link_to new_user_card_path(current_user) do

@@ -4,7 +4,7 @@ class CardsController < ApplicationController
 
   def new # カードの登録画面。送信ボタンを押すとcreateアクションへ。
     card = Card.where(user_id: current_user.id).first
-    redirect_to edit_user_card_path(current_user) if card.present?
+    redirect_to user_path(current_user) if card.present?
   end
 
  # indexアクションはここでは省略
@@ -29,7 +29,7 @@ class CardsController < ApplicationController
       )
       @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
       if @card.save
-        redirect_to root_path
+        redirect_to user_path(current_user)
       else
         redirect_to new_user_card_path(current_user)
       end
@@ -76,15 +76,6 @@ class CardsController < ApplicationController
       ## 有効期限'年'を定義
       @exp_year = @customer_card.exp_year.to_s.slice(2,3)
     end
-  end
-
-
-
-
-
-
-  def edit
-    @user = User.find(params[:id])
   end
 
   private

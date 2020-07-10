@@ -28,6 +28,7 @@ var form = $("#card__form");
        //↑そしてここでsubmit！！これでrailsのアクションにいく！もちろん上でトークンをセットしているのでparamsの中には{payjpToken="トークン"}という情報が入っている
       }else{
         alert("カード情報が正しくありません。");
+        document.location.reload()
       }
     });
   });

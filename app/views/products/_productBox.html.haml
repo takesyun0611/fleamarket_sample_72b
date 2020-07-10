@@ -1,0 +1,16 @@
+= link_to product_path(id: product[:id]) do
+  .productBox
+    .productBox--img
+      = image_tag product.pictures[0].content.url
+    .productBox--body
+      %h3.name
+        = product.name
+      .productBox--body__details
+        %ul
+          %li
+            #{product.price}円
+          %li
+            = icon('fas', 'star')
+            0
+        %p
+          (税込)

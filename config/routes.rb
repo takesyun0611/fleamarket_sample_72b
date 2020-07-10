@@ -11,9 +11,10 @@ Rails.application.routes.draw do
   resources :users, only: :show do
     resources :cards, only: [:new, :create, :edit, :show]
   end
-  resources :products, except: :show do
+  resources :products do
     collection do
       get :searchChild
     end
+    resources :comments, only: :create
   end
 end

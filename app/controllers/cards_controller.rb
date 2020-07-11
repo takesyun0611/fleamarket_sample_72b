@@ -12,8 +12,7 @@ class CardsController < ApplicationController
   end
 
   def create #PayjpとCardのデータベースを作成
-    Payjp.api_key = 'sk_test_94989bc4660d52fba7aa4d1e'
-    # binding.pry
+    Payjp.api_key = ENV["PAYJP_ACCESS_KEY"]
     if params['payjp-token'].blank?
       redirect_to root_path
     else
@@ -38,14 +37,12 @@ class CardsController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    # ログイン中のユーザーのクレジットカード登録の有無を判断
-    # @card = CreditCard.find_by(user_id: current_user.id)
     if @card.blank?
       # 未登録なら新規登録画面に
       redirect_to action: "new" 
     else
       # 前前回credentials.yml.encに記載したAPI秘密鍵を呼び出します。
-      Payjp.api_key = "sk_test_94989bc4660d52fba7aa4d1e"
+      Payjp.api_key = ENV["PAYJP_ACCESS_KEY"]
       # ログインユーザーのクレジットカード情報からPay.jpに登録されているカスタマー情報を引き出す
       customer = Payjp::Customer.retrieve(@card.customer_id)
       # カスタマー情報からカードの情報を引き出す

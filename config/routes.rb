@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   root 'items#index'
   resources :products, only: [:index, :create]
   resources :users, only: :show do
-    resources :cards, only: [:new, :create, :edit, :show]
+    resources :cards, only: [:new, :create,:show, :destroy]
   end
   resources :products do
     collection do

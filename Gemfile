@@ -81,6 +81,7 @@ gem 'pry-rails'
 gem 'jquery-rails'
 gem 'jp_prefecture'
 gem 'rails-i18n'
+gem 'payjp'
 gem "carrierwave"
 gem 'fog-aws'
 gem 'carrierwave'

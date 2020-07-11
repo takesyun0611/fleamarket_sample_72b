@@ -1,0 +1,10 @@
+.create-shipment__main
+  .container
+    .header
+      %h2 登録が完了しました
+
+    .link-text
+      = link_to new_user_card_path(current_user), class:"card-page" do
+        クレジットカード登録へ進む（後でも可）
+      = link_to "/", class:"top-page" do
+        トップページへ戻る

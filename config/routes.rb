@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   root 'items#index'
   resources :products, only: [:index, :create]
   resources :users, only: :show do
-    resources :cards, only: [:new, :create,:show, :destroy]
+    resources :cards, only: [:new, :create, :show, :edit , :destroy]
+    post 'pay','cards/pay'
   end
   resources :products do
     collection do

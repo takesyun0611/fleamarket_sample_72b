@@ -1,3 +1,16 @@
+.test
+  = @product.id
+  = @product.name
+  = @product.description
+  = @product.category
+  = @product.size
+  = @product.brand
+  = @product.status
+  = @product.delivery_fee
+  = @product.shipping_method
+  = @product.prefecture
+  = @product.date_of_ship_id
+  = @product.price
 .buy
   = link_to user_cards_pay_path(current_user, product_id: @product.id), method: :post, class: 'productBuy' do
     購入する

@@ -93,8 +93,8 @@
         .showProduct--info__buy
           売り切れ
       - else
-        .showProduct--info__buy
-          = link_to product_buy_path(current_user, product_id: @product.id), class: 'productBuy' do
+        = link_to product_buy_path(current_user, product_id: @product.id), class: 'productBuy' do
+          .showProduct--info__buy
             購入
     .showProduct--comment
       = form_for @comment, url: product_comments_path(product_id: params[:id]) do |f|

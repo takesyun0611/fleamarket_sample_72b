@@ -38,6 +38,9 @@ a {
         width: 36px;
         height: 36px;
         background-color: #3CCACE;
+        .hidden {
+          display: none;
+        }
         img{
           width: 19.77px;
           height: 19.77px;

@@ -1,0 +1,24 @@
+.category
+  %ul.category--routine
+    %li
+      = link_to "#" do
+        FURIMA
+    %li
+      = icon('fas', 'angle-right',class: 'angle-right')
+    %li
+      = link_to "#" do
+        = @category.parent.parent.name
+    %li
+      = icon('fas', 'angle-right',class: 'angle-right')
+    %li
+      = link_to "#" do
+        = @category.parent.name
+    %li
+      = icon('fas', 'angle-right',class: 'angle-right')
+    %li
+      = link_to "#" do
+        = @category.name
+    %li
+      = icon('fas', 'angle-right',class: 'angle-right')
+    %li
+      = @product.name

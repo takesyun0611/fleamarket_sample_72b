@@ -88,7 +88,11 @@
         .showProduct--info__optional__report
           = icon('fas', 'flag')
           &nbsp;不適切な商品の通報
-      - if @product.user_id != current_user.id
+      -if @product.user_id == current_user.id
+      - elsif @product.sold_out.present?
+        .showProduct--info__buy
+          売り切れ
+      - else
         .showProduct--info__buy
           = link_to user_cards_pay_path(current_user, product_id: @product.id), method: :post, class: 'productBuy' do
             購入

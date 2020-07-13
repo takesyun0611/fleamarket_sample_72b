@@ -6,10 +6,10 @@ class User < ApplicationRecord
 
   validates :email, presence: true, uniqueness: true
   has_many :shipments
-  has_many :one
   has_many :products
   has_many :comments
-
+  has_one :card
+  
   validates :nickname, presence: true
   validates :birthday, presence: true
   validates :family_name, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/ }

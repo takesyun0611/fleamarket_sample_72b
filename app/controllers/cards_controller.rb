@@ -7,8 +7,6 @@ class CardsController < ApplicationController
     redirect_to user_path(current_user) if card.present?
   end
 
- # indexアクションはここでは省略
-
   def create #PayjpとCardのデータベースを作成
     Payjp.api_key = ENV["PAYJP_ACCESS_KEY"]
     if params['payjp-token'].blank?

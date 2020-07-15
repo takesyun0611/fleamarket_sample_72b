@@ -34,7 +34,7 @@ class ProductsController < ApplicationController
   def destroy
     @product = Product.find(params[:id])
     @product.destroy
-    redirect_to user_path(current_user), notice: '削除しました'
+    redirect_to user_path(current_user)
   end
 
   def searchChild

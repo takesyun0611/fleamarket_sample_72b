@@ -3,7 +3,7 @@
     .showProduct--info
       - if @product.user_id == current_user.id
         .showProduct--info__seller
-          = link_to "#", class: 'productEdit' do
+          = link_to edit_product_path class: 'productEdit' do
             .showProduct--info__seller__edit
               編集
           = link_to "#", class: 'productDelete' do

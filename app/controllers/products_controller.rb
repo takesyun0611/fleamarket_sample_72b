@@ -31,6 +31,12 @@ class ProductsController < ApplicationController
     @relateProducts = @product.relateProducts(params)
   end
 
+  def destroy
+    @product = Product.find(params[:id])
+    @product.destroy
+    redirect_to user_path(current_user), notice: '削除しました'
+  end
+
   def searchChild
     @children = Category.find(params[:id]).children
     respond_to do |format|

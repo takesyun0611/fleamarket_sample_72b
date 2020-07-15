@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :shipments
   has_many :cards
   has_many :products
+  # has_many :products, foreign_key: :user_id, dependent: :destroy
   has_many :comments
 
   validates :nickname, presence: true

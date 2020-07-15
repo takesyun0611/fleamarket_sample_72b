@@ -6,7 +6,8 @@
           = link_to "#", class: 'productEdit' do
             .showProduct--info__seller__edit
               編集
-          = link_to "#", class: 'productDelete' do
+          -# = link_to "#", class: 'productDelete' do
+          = link_to product_path(params[:id]), method: :delete, class: 'productDelete' do
             .showProduct--info__seller__delete
               削除
       .showProduct--info__name

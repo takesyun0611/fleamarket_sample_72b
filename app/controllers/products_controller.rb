@@ -31,6 +31,7 @@ class ProductsController < ApplicationController
     @relateProducts = @product.relateProducts(params)
   end
 
+
   def edit
     @product = Product.find(params[:id])
     if @product.user == current_user
@@ -47,6 +48,11 @@ class ProductsController < ApplicationController
     else
       render :edit
     end
+
+  def destroy
+    @product = Product.find(params[:id])
+    @product.destroy
+    redirect_to user_path(current_user)
   end
 
   def searchChild

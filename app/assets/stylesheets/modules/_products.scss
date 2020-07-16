@@ -80,6 +80,8 @@ hr {
     }
   }
 
+
+
   //フォーム
   .product-form {
     background-color: #ffffff;
@@ -151,6 +153,14 @@ hr {
           }
           &__select {
             margin-top: 16px;
+            &__box {
+              &__child {
+                margin-top: 16px;
+              }
+              &__grandchild {
+                margin-top: 16px;
+              }
+            }
           }
         }
       }

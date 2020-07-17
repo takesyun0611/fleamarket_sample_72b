@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     post 'shipments', to: 'users/registrations#create_shipment'
   end
   root 'items#index'
-  resources :products, only: [:index, :create] do
+  resources :products, only: [:index, :create, :destroy] do
     get 'buy','products/buy'
   end
   resources :users, only: :show do
@@ -16,7 +16,10 @@ Rails.application.routes.draw do
   end
   resources :products do
     collection do
+      get :get_category_children, defaults: { format: 'json'}
+      get :get_category_grandchildren, defaults: { format: 'json'}
       get :searchChild
+      get :update_done
     end
     resources :comments, only: :create
   end

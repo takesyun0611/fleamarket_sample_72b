@@ -31,6 +31,30 @@ class ProductsController < ApplicationController
     @relateProducts = @product.relateProducts(params)
   end
 
+
+  def edit
+    @product = Product.find(params[:id])
+    if @product.user == current_user
+      render 'edit'
+    else
+      redirect_to product_path
+    end
+  end
+
+  def update
+    @product = Product.find(params[:id])
+    if @product.update(product_params)
+      redirect_to product_path(id: @product.id)
+    else
+      render :edit
+    end
+
+  def destroy
+    @product = Product.find(params[:id])
+    @product.destroy
+    redirect_to user_path(current_user)
+  end
+
   def searchChild
     @children = Category.find(params[:id]).children
     respond_to do |format|
@@ -46,7 +70,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :description, :category_id, :size, :brand_id, :status_id, :delivery_fee_id, :shipping_method_id, :prefecture, :date_of_ship_id, :price, :sold_out, pictures_attributes: [:content], brand_attributes: [:name]).merge(user_id: current_user.id)
+    params.require(:product).permit(:name, :description, :category_id, :size, :brand_id, :status_id, :delivery_fee_id, :shipping_method_id, :prefecture, :date_of_ship_id, :price, :sold_out, pictures_attributes: [:content, :_destroy, :id], brand_attributes: [:name]).merge(user_id: current_user.id)
   end
 
 end

@@ -8,7 +8,6 @@ class ProductsController < ApplicationController
     @product = Product.new
     @product.pictures.build
     @product.build_brand
-
     # 下記limitメソッドに親カテゴリの数を代入してくだいさい
     @category_parents = Category.all.order("id ASC").limit(13)
   end
@@ -48,6 +47,7 @@ class ProductsController < ApplicationController
     else
       render :edit
     end
+  end
 
   def destroy
     @product = Product.find(params[:id])
@@ -65,6 +65,11 @@ class ProductsController < ApplicationController
 
   def buy
     @product = Product.find(params[:product_id])
+    if @product.sold_out.nil?
+      product_buy_path
+    else
+      redirect_to root_path
+    end
   end
 
   private
@@ -72,5 +77,4 @@ class ProductsController < ApplicationController
   def product_params
     params.require(:product).permit(:name, :description, :category_id, :size, :brand_id, :status_id, :delivery_fee_id, :shipping_method_id, :prefecture, :date_of_ship_id, :price, :sold_out, pictures_attributes: [:content, :_destroy, :id], brand_attributes: [:name]).merge(user_id: current_user.id)
   end
-
 end

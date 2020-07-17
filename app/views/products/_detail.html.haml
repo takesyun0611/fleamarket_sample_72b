@@ -89,7 +89,7 @@
           = icon('fas', 'flag')
           &nbsp;不適切な商品の通報
       -if @product.user_id == current_user.id
-      - elsif @product.sold_out.present?
+      - elsif @product.sold_out.nil?
         .showProduct--info__buy
           売り切れ
       - else

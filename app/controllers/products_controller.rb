@@ -65,10 +65,12 @@ class ProductsController < ApplicationController
 
   def buy
     @product = Product.find(params[:product_id])
-    if @product.sold_out.nil?
-      product_buy_path
-    else
+    if @product.user_id == current_user.id
       redirect_to root_path
+    elsif @product.sold_out.present?
+      redirect_to root_path
+    else
+      product_buy_path
     end
   end
 

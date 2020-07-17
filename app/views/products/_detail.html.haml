@@ -88,8 +88,11 @@
         .showProduct--info__optional__report
           = icon('fas', 'flag')
           &nbsp;不適切な商品の通報
-      - if @product.user_id != current_user.id
-        = link_to "#", class: 'productBuy' do
+      - if @product.sold_out.present?
+        .showProduct--info__buy
+          売り切れ
+      - else
+        = link_to product_buy_path(current_user, product_id: @product.id), class: 'productBuy' do
           .showProduct--info__buy
             購入
     .showProduct--comment

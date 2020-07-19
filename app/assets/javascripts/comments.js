@@ -20,7 +20,6 @@ $(function() {
     e.preventDefault();
     var formData = new FormData(this);
     var url = $(this).attr('action');
-    $('.comment-content').val('');
     $.ajax({
       url: url,
       type: "POST",

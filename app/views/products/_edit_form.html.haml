@@ -1,0 +1,164 @@
+.product-form
+  = form_for @product do |f|
+    - if @product.errors.any?
+      .errors
+        %h2="#{@product.errors.full_messages.count}件のエラーが発生しました。"
+        %ul
+          - @product.errors.full_messages.each do |message|
+            %li= message
+    %hr
+    .product-form-images
+      .images-box
+        .images-box__name
+          %h1.headline 出品画像
+          %span.required 必須
+      %p.images-box__remarks 最大5枚までアップロードできます
+      .post__drop__box__container
+        .prev-content
+          //JSで挿入したhtmlと同じ形 each文でのプレビュー表示
+          - @product.pictures.each do |picture|
+            .preview-box
+              .upper-box
+                = image_tag picture.content.url, width: "112", height: "112", alt: "preview"
+              .lower-box
+                .update-box
+                  %span.edit-btn 編集
+                .delete-box
+                  .delete-btn
+                    %span 削除
+        .label-content
+
+          //プレビューの数に合わせてforオプションを指定
+          = f.label :"pictures_attributes_#{@product.pictures.length}_content", class: "label-box", id: "label-box--#{@product.pictures.length}" do
+            %pre.label-box__text-visible クリックしてファイルをアップロード
+        .hidden-content
+          = f.fields_for :pictures do |picture|
+
+            //プレビューが出ている分のfile_fieldとdelete用のチェックボックスを設置
+            = picture.file_field :content, class: "hidden-field"
+            = picture.check_box:_destroy, class: "hidden-checkbox"
+
+            //5つのfile_fieldを準備するに当たって、足りない分を表示
+          - @product.pictures.length.upto(4) do |i|
+            %input{name: "product[pictures_attributes][#{i}][content]", id: "product_pictures_attributes_#{i}_content", class:"hidden-field", type:"file"}
+
+
+
+
+    %hr
+    .product-form-about
+      .about-name
+        .about-name__box
+          %h1.headline 商品名
+          %span.required 必須
+        .about-name__input
+          .about-name__input__product-name
+            = f.text_field :name, placeholder: '40文字以内', class: 'input'
+      .about-description
+        .about-description__box
+          %h1.headline 商品の説明
+          %span.required 必須
+        = f.text_area :description, placeholder: '商品の説明（必須 1,000文字以内）', class: 'about-description__input input'
+    %hr
+    .product-form-details
+      %p.details-name 商品の詳細
+      .details-category
+        .details-category__boxes
+          .details-category__boxes__box
+            %h1.headline カテゴリー
+            %span.required 必須
+          .details-category__boxes__select
+            .details-category__boxes__select__box
+              .details-category__boxes__select__box__parent
+                = f.collection_select :category_id, Category.roots, :id, :name, {include_blank: '選択してください', selected: @product.category.parent.parent_id}, {class: 'category_parent', id: 'category_parent'}
+              .details-category__boxes__select__box__child
+                = f.collection_select :category_id, @product.category.parent.parent.children, :id, :name, {include_blank: '選択してください', selected: @product.category.parent_id}, {class: 'category_parent', id: 'category_child'}
+              .details-category__boxes__select__box__grandchild
+                = f.collection_select :category_id, @product.category.parent.children, :id, :name, {include_blank: '選択してください', selected: @product.category.id}, {class: 'category_parent', id: 'category_grandchild'}
+
+      .details-size
+        .details-size__boxes
+          .details-size__boxes__box
+            %h1.headline サイズ
+            %span.any 任意
+          .details-size__boxes__select
+            .details-size__boxes__select__box
+              = f.text_field :size, class: 'input', placeholder: '例）テレビ ＞ 24インチ、 服 ＞ Mサイズ'
+      .details-brand
+        .details-brand__boxes
+          .details-brand__boxes__box
+            %h1.headline ブランド
+            %span.any 任意
+          .details-brand__boxes__select
+            .details-brand__boxes__select__box
+              = f.fields_for :brand do |brand|
+                = brand.text_field :name, placeholder: "例）ナイキ", value: "", class: "input"
+      .details-status
+        .details-status__boxes
+          .details-status__boxes__box
+            %h1.headline 商品の状態
+            %span.required 必須
+          .details-status__boxes__select
+            .details-status__boxes__select__box
+              = f.collection_select :status_id, Status.all, :id, :status, {include_blank: '選択してください'}, {class: 'aaa', id: 'bbb'}
+    %hr
+    .product-form-delivery
+      %p.delivery-name 配送について
+      .delivery-fee
+        .delivery-fee__boxes
+          .delivery-fee__boxes__box
+            %h1.headline 配送料の負担
+            %span.required 必須
+          .delivery-fee__boxes__select
+            .delivery-fee__boxes__select__box
+              = f.collection_select :delivery_fee_id, DeliveryFee.all, :id, :delivery_fee, {include_blank: '選択してください'}, {class: 'aaa', id: 'bbb'}
+      .delivery-method
+        .delivery-method__boxes
+          .delivery-method__boxes__box
+            %h1.headline 配送の方法
+            %span.required 必須
+          .delivery-method__boxes__select
+            .delivery-method__boxes__select__box
+              = f.collection_select :shipping_method_id, ShippingMethod.all, :id, :shipping_method, {include_blank: '選択してください'}, {class: 'aaa', id: 'bbb'}
+      .delivery-prefecture
+        .delivery-prefecture__boxes
+          .delivery-prefecture__boxes__box
+            %h1.headline 発送元の地域
+            %span.required 必須
+          .delivery-prefecture__boxes__select
+            .delivery-prefecture__boxes__select__box
+              = f.collection_select :prefecture, JpPrefecture::Prefecture.all, :name, :name, {include_blank: '選択してください'}, {class: 'aaa', id: 'bbb'}
+      .delivery-date
+        .delivery-date__boxes
+          .delivery-date__boxes__box
+            %h1.headline 発送までの日数
+            %span.required 必須
+          .delivery-date__boxes__select
+            .delivery-date__boxes__select__box
+              = f.collection_select :date_of_ship_id, DateOfShip.all, :id, :date_of_ship, {include_blank: '選択してください'}, {class: 'aaa', id: 'bbb'}
+    %hr
+    .product-form-price
+      %p.price-name 価格（¥300~9,999,999）
+      .price-boxes
+        .price-boxes__sell
+          .price-boxes__sell__name
+            %h1.headline 販売価格
+            %span.required 必須
+          .price-boxes__sell__input
+            = f.number_field :price, class: 'input', id: 'price_calc'
+        .price-boxes__fee
+          .prcie-boxes__fee__name
+            販売手数料(10%)
+          %span.price-boxes__fee__value -
+        %hr
+        .price-boxes__profit
+          .price-boxes__profit__name
+            販売利益
+          %span.price-boxes__profit__value -
+    .product-form-button
+      = f.submit '変更する', class: 'send'
+      .button-back
+        = link_to root_path class: 'button-back__decolation' do
+          もどる
+    
+    %p.product-form-note 禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります

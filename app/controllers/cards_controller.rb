@@ -7,10 +7,6 @@ class CardsController < ApplicationController
     redirect_to user_path(current_user) if card.present?
   end
 
- # indexアクションはここでは省略
-  def index
-  end
-
   def create #PayjpとCardのデータベースを作成
     Payjp.api_key = ENV["PAYJP_ACCESS_KEY"]
     if params['payjp-token'].blank?
@@ -75,6 +71,39 @@ class CardsController < ApplicationController
     end
   end
 
+  def destroy #PayjpとCardデータベースを削除
+    card = Card.where(user_id: current_user.id).first
+    if card.present?
+      Payjp.api_key = ENV["PAYJP_ACCESS_KEY"]
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      customer.delete
+      card.delete
+    end
+      redirect_to action: "new"
+  end
+
+  def pay #クレジット購入
+    if @card.blank?
+      redirect_to action: "new"
+      flash[:alert] = '購入にはクレジットカード登録が必要です'
+    else
+    @product = Product.find(params[:product_id])
+    # 購入した際の情報を元に引っ張ってくる
+    # テーブル紐付けてるのでログインユーザーのクレジットカードを引っ張ってくる
+      Payjp.api_key = ENV["PAYJP_ACCESS_KEY"]
+     # キーをセットする(環境変数においても良い)
+      Payjp::Charge.create(
+      amount: @product.price, #支払金額
+      customer: @card.customer_id, #顧客ID
+      currency: 'jpy', #日本円
+      )
+     # ↑商品の金額をamountへ、cardの顧客idをcustomerへ、currencyをjpyへ入れる
+      @product.update(sold_out: current_user.id)
+      flash[:notice] = '購入しました。'
+      redirect_to root_path
+    end
+  end
+  
   private
 
   def set_card

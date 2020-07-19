@@ -132,4 +132,13 @@
     .showProduct--relateProducts
       - if @relateProducts[0] != nil
         = render partial: "productBox", locals: { product: @relateProducts[0] }
+  .main__download
+    .inner
+      %h2.inner__title だれでもかんたん、人生を変えるフリマアプリ
+      %p.inner__text 今すぐ無料ダウンロード！
+      .inner__btn
+        = link_to "#", class: "content__btn--apple" do
+          = image_tag "http://furima.tokyo/assets/app-store-9c5e28e8f81bd9912e0ded2f78821e04778a1356c05dc7c7bf1e88614be37c34.svg"
+        = link_to "#", class: "content__btn--google" do
+          = image_tag "http://furima.tokyo/assets/google-play-469c63f1269e456307c4dde176b33cc3bbbbf142ac4d7369656010130149db1a.svg"
 

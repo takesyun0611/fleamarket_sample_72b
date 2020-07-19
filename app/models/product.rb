@@ -39,4 +39,9 @@ class Product < ApplicationRecord
     end
     return results
   end
+
+  def self.search(search)
+    return Product.all unless search
+    Product.where('(name LIKE(?)) OR (description LIKE(?))', "%#{search}%", "%#{search}%")
+  end
 end

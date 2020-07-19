@@ -1,0 +1,11 @@
+.main
+  .searchResults
+    .searchResults--title
+      .searchResults--title--keyword
+        = params[:keyword]
+      .searchResults--title--text
+        の検索結果
+    .searchResults--products
+      - @products.each do |product|
+        .searchResults--products--productBox
+          = render partial: "products/productBox", locals: { product: product }

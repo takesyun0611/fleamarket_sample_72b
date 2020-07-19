@@ -1,0 +1,32 @@
+// Place all the styles related to the search controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.search-index {
+  .main {
+    padding: 20px 50px;
+    .searchResults {
+      &--title {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        &--keyword {
+          font-size: 18px;
+          font-weight: 600;
+          margin-right: 5px;
+        }
+        &--text {
+          font-size: 16px;
+          font-weight: 400;
+        }
+      }
+      &--products {
+        display: flex;
+        flex-wrap: wrap;
+        &--productBox {
+          width: 233px;
+          margin-right: 30px;
+        }
+      }
+    }
+  }
+}

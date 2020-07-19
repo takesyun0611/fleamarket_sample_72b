@@ -2,7 +2,9 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     if @comment.save
-      redirect_to product_path(id: params[:product_id])
+      respond_to do |format|
+        format.json
+      end
     end
   end
 

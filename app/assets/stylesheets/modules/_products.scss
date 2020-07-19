@@ -696,6 +696,27 @@ hr {
         display: none;
       }
     }
+    &__comments {
+      margin-top: 20px;
+      &__box {
+        margin-top: 5px;
+        display: flex;
+        align-items: center;
+        font-size: 22px;
+        &__userName {
+          color: #3CCACE;
+          font-weight: bold;
+        }
+        &__content {
+          margin-left: 10px;
+        }
+        &__date {
+          margin-left: auto;
+          color: #3CCACE;
+          font-size: 15px;
+        }
+      }
+    }
   }
   &--links {
     width: 700px;

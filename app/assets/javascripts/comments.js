@@ -32,8 +32,7 @@ $(function() {
     .done(function(data){
       var html = buildHTML(data);
       $('.showProduct--comment__comments').append(html);
-      $('.comment-content').val('');
-      $('#comment_submit').prop('disabled', false);
+      $('#new_comment').reset();
     })
   });
 });

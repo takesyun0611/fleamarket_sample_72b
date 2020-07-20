@@ -30,28 +30,85 @@
     display: flex;
     justify-content: center;
     padding: 20px 0;
+    width: 50%;
+    margin: 0 auto;
     .photo-confirmation {
       height: 80px;
       width: 80px;
       margin-right: 20px;
+    }
+    .product-details-confirmation {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      &__name {
+        font-size: 15px;
+      }
+      &__price {
+        text-align: right;
+        margin-top: 10px;
+        font-size: 15px;
+        font-weight: bold;
+      }
     }
   }
 
   .price-confirmation {
     display: flex;
     justify-content: center;
-    padding: 20px 0 ;
+    padding: 20px 0;
     &__box {
       width: 50%;
       display: flex;
       justify-content: space-between;
+      font-size: 20px;
+      font-weight: bold;
     }
   }
 
   .payment-confirmation {
     display: flex;
     justify-content: center;
-    padding: 20px 0 ;
+    flex-direction: column;
+    width: 50%;
+    padding: 20px 0;
+    margin: 0 auto;
+    &__title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      &--change {
+        color: skyblue;
+        font-size: 15px;
+        position: relative;
+        display: inline-block;
+        text-decoration: none;
+      }
+      &--change::after {
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        content: '';
+        width: 100%;
+        height: 2px;
+        background: rgb(185, 226, 242);
+        transform: scale(0, 1);
+        transform-origin: left top;
+        transition: transform .3s;
+      }
+      &--change:hover::after {
+        color: rgb(185, 226, 242);
+        transform: scale(1, 1);
+      }
+    }
+    .credit_card_info_confirmation {
+      font-size: 15px;
+    }
+    .credit_card_info_brand--confirmation {
+      margin-top: 10px;
+    }
   }
 
   .shipping-address-confirmation {
@@ -59,11 +116,37 @@
     justify-content: center;
     flex-direction: column;
     width: 50%;
-    padding: 20px 0 ;
+    padding: 20px 0;
     margin: 0 auto;
     &__title {
       font-size: 20px;
       font-weight: bold;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      &--change {
+        color: skyblue;
+        font-size: 15px;
+        position: relative;
+        display: inline-block;
+        text-decoration: none;
+      }
+      &--change::after {
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        content: '';
+        width: 100%;
+        height: 2px;
+        background: rgb(185, 226, 242);
+        transform: scale(0, 1);
+        transform-origin: left top;
+        transition: transform .3s;
+      }
+      &--change:hover::after {
+        color: rgb(185, 226, 242);
+        transform: scale(1, 1);
+      }
     }
     &__postal {
       font-size: 15px;
@@ -93,5 +176,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  &__btn:hover {
+    background-color: rgb(191, 22, 22);
   }
 }

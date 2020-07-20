@@ -9,37 +9,45 @@
     .product-confirmation
       = image_tag @product.pictures[0].content.url, class: 'photo-confirmation'
       .product-details-confirmation
-        = @product.name
-        = @product.price
+        .product-details-confirmation__name
+          = @product.name
+        .product-details-confirmation__price
+          送料込み(税込)
+          ¥
+          = @product.price.to_s(:delimited)
 
     %hr.line-1
     .price-confirmation
       .price-confirmation__box
-        %span.aaaaaa
+        %span.price-confirmation__box--title
           お支払い金額
 
-        .aaa
+        .price-confirmation__box--money
           ¥
-          = @product.price
+          = @product.price.to_s(:delimited)
 
     %hr.line-1
     .payment-confirmation
-      .credit_card_info__brand--confirmation
-        = image_tag @card_src, class: "credit_card_info__brand__img", size: '50x30', alt: @card_brand
-      .credit_card_info__numbers--confirmation
-        .number--confirmation
+      .payment-confirmation__title
+        お支払い方法
+        = link_to '#', class: 'payment-confirmation__title--change' do
+          変更する ▶︎
+      .credit_card_info_confirmation
+        .credit_card_info__number--confirmation
           = "**** **** **** " + @customer_card.last4
         .expiration_date--confirmation
-          .expiration_date__title--confirmation
-            有効期限
           .expiration_date__info--confirmation
+            有効期限
             = @exp_month + " / " + @exp_year
-
+      .credit_card_info_brand--confirmation
+        = image_tag @card_src, class: "credit_card_info__brand__img", size: '50x30', alt: @card_brand
 
     %hr.line-1
     .shipping-address-confirmation
       .shipping-address-confirmation__title
         配送先
+        = link_to '#', class: 'shipping-address-confirmation__title--change' do
+          変更する ▶︎
       .shipping-address-confirmation__postal
         〒
         = @shipment.postal_code

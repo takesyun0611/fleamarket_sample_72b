@@ -8,7 +8,7 @@ class CardsController < ApplicationController
   end
 
   def create #PayjpとCardのデータベースを作成
-    Payjp.api_key = 'sk_test_94989bc4660d52fba7aa4d1e'
+    Payjp.api_key = ENV["PAYJP_ACCESS_KEY"]
     if params['payjp-token'].blank?
       redirect_to root_path
     else
@@ -38,7 +38,7 @@ class CardsController < ApplicationController
       redirect_to action: "new" 
     else
       # 前前回credentials.yml.encに記載したAPI秘密鍵を呼び出します。
-      Payjp.api_key = 'sk_test_94989bc4660d52fba7aa4d1e'
+      Payjp.api_key = ENV["PAYJP_ACCESS_KEY"]
       # ログインユーザーのクレジットカード情報からPay.jpに登録されているカスタマー情報を引き出す
       customer = Payjp::Customer.retrieve(@card.customer_id)
       # カスタマー情報からカードの情報を引き出す
@@ -74,7 +74,7 @@ class CardsController < ApplicationController
   def destroy #PayjpとCardデータベースを削除
     card = Card.where(user_id: current_user.id).first
     if card.present?
-      Payjp.api_key = 'sk_test_94989bc4660d52fba7aa4d1e'
+      Payjp.api_key = ENV["PAYJP_ACCESS_KEY"]
       customer = Payjp::Customer.retrieve(card.customer_id)
       customer.delete
       card.delete
@@ -90,7 +90,7 @@ class CardsController < ApplicationController
     @product = Product.find(params[:product_id])
     # 購入した際の情報を元に引っ張ってくる
     # テーブル紐付けてるのでログインユーザーのクレジットカードを引っ張ってくる
-      Payjp.api_key = 'sk_test_94989bc4660d52fba7aa4d1e'
+      Payjp.api_key = ENV["PAYJP_ACCESS_KEY"]
      # キーをセットする(環境変数においても良い)
       Payjp::Charge.create(
       amount: @product.price, #支払金額

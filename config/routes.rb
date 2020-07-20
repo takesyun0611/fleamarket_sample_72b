@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     get 'buy','products/buy'
   end
   resources :users, only: :show do
-    resources :cards, only: [:new, :create, :show, :edit , :destroy]
+    resources :cards, only: [:new, :create, :show, :edit, :destroy]
     post 'pay','cards/pay'
   end
   resources :products do

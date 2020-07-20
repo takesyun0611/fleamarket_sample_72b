@@ -65,6 +65,46 @@ class ProductsController < ApplicationController
 
   def buy
     @product = Product.find(params[:product_id])
+    @shipment = Shipment.find(current_user.id)
+    @card = Card.where(user_id: current_user.id).first
+    if @card.blank?
+      # 未登録なら新規登録画面に
+      redirect_to new_user_card_path(current_user)
+      binding.pry
+    else
+      # 前前回credentials.yml.encに記載したAPI秘密鍵を呼び出します。
+      Payjp.api_key = 'sk_test_94989bc4660d52fba7aa4d1e'
+      # ログインユーザーのクレジットカード情報からPay.jpに登録されているカスタマー情報を引き出す
+      customer = Payjp::Customer.retrieve(@card.customer_id)
+      # カスタマー情報からカードの情報を引き出す
+      @customer_card = customer.cards.retrieve(@card.card_id)
+
+      ##カードのアイコン表示のための定義づけ
+      @card_brand = @customer_card.brand
+      case @card_brand
+      when "Visa"
+        # 例えば、Pay.jpからとってきたカード情報の、ブランドが"Visa"だった場合は返り値として
+        # (画像として登録されている)Visa.pngを返す
+        @card_src = "card-icon/visa.png"
+      when "JCB"
+        @card_src = "card-icon/jcb.png"
+      when "MasterCard"
+        @card_src = "card-icon/mastercard.png"
+      when "American Express"
+        @card_src = "card-icon/americanExpress.png"
+      when "Diners Club"
+        @card_src = "card-icon/dinersClub.png"
+      when "Discover"
+        @card_src = "card-icon/discover.png"
+      end
+
+      #  viewの記述を簡略化
+      ## 有効期限'月'を定義
+      @exp_month = @customer_card.exp_month.to_s
+      ## 有効期限'年'を定義
+      @exp_year = @customer_card.exp_year.to_s.slice(2,3)
+    end
+    
     if @product.user_id == current_user.id
       redirect_to root_path
     elsif @product.sold_out.present?

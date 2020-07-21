@@ -73,7 +73,7 @@ class ProductsController < ApplicationController
       redirect_to new_user_card_path(current_user)
     else
       # 前前回credentials.yml.encに記載したAPI秘密鍵を呼び出します。
-      Payjp.api_key = ENV["PAYJP_ACCESS_KEY"]
+      Payjp.api_key = 'sk_test_94989bc4660d52fba7aa4d1e'
       # ログインユーザーのクレジットカード情報からPay.jpに登録されているカスタマー情報を引き出す
       customer = Payjp::Customer.retrieve(@card.customer_id)
       # カスタマー情報からカードの情報を引き出す

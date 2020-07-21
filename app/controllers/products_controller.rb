@@ -70,7 +70,6 @@ class ProductsController < ApplicationController
     if @card.blank?
       # 未登録なら新規登録画面に
       redirect_to new_user_card_path(current_user)
-      binding.pry
     else
       # 前前回credentials.yml.encに記載したAPI秘密鍵を呼び出します。
       Payjp.api_key = 'sk_test_94989bc4660d52fba7aa4d1e'

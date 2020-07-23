@@ -10,6 +10,7 @@ class Product < ApplicationRecord
   has_many :pictures, foreign_key: "product_id", dependent: :destroy
   accepts_nested_attributes_for :pictures, allow_destroy: true
   has_many :comments
+  has_many :likes
 
   validates_associated :pictures
   validates :pictures, presence: { message: "してください"}

@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :products
   has_many :comments
   has_one :card
+  has_many :likes
   
   validates :nickname, presence: true
   validates :birthday, presence: true

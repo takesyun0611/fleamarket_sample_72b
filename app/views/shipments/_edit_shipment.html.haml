@@ -3,7 +3,7 @@
     .header
       %h2 送付先情報登録
     .form
-      = form_for(@shipment, url: shipments_path) do |f|
+      = form_for @shipment do |f|
         - if @shipment.errors.any?
           .errors
             %h2= "#{@shipment.errors.full_messages.count}件のエラーが発生しました。"
@@ -15,14 +15,14 @@
           %span.field__require 必須
           %br/
           .input-box-half
-          = f.text_field :family_name, value: "#{session["devise.regist_data"][:user]["family_name"]}", class: "input-box-half--left"
-          = f.text_field :given_name, value: "#{session["devise.regist_data"][:user]["given_name"]}", class: "input-box-half--right"
+          = f.text_field :family_name, class: "input-box-half--left"
+          = f.text_field :given_name, class: "input-box-half--right"
         .field
           = f.label :お名前カナ（全角）, class: "field__label"
           %span.field__require 必須
           %br/
-          = f.text_field :family_name_kana, value: "#{session["devise.regist_data"][:user]["family_name_kana"]}", class: "input-box-half--left"
-          = f.text_field :given_name_kana, value: "#{session["devise.regist_data"][:user]["given_name_kana"]}", class: "input-box-half--right"
+          = f.text_field :family_name_kana, class: "input-box-half--left"
+          = f.text_field :given_name_kana, class: "input-box-half--right"
         .field
           = f.label :郵便番号, class: "field__label"
           %span.field__require 必須
@@ -54,6 +54,6 @@
         .field
           = f.label :電話番号, class: "field__label"
           %br/
-          = f.text_field :phone_number, value: "#{session["devise.regist_data"][:user]["phone_number"]}", class: "input-box"
+          = f.text_field :phone_number, class: "input-box"
         .actions
           = f.submit "登録完了", class: "complete-btn"

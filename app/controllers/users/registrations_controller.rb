@@ -37,14 +37,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
-  def edit_shipment
-
-  end
-
-  def update_shipment
-    
-  end
-
   # GET /resource/edit
   # def edit
   #   super

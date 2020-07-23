@@ -260,6 +260,14 @@ $(document).on('turbolinks:load', function() {
 $(function(){
   $('.showProduct--info__optional__like').on('click', function(e){
     e.preventDefault();
-    console.log(this);
+    var like = this.value;
+    $.ajax({
+      type: 'POST',
+      url: '/likes/create',
+      data: like,
+      dataType: 'json',
+      processData: false,
+      contentType: false
+    })
   });
 });

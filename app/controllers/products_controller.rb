@@ -23,12 +23,16 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find(params[:id])
-    @seller = @product.user
-    @category = @product.category
-    @newComment = @product.comments.new
-    @comments = @product.comments.order('created_at ASC')
-    @relateProducts = @product.relateProducts(params)
+    @product = Product.find_by(id: params[:id])
+    if @product.nil?
+      redirect_to root_path
+    else
+      @seller = @product.user
+      @category = @product.category
+      @newComment = @product.comments.new
+      @comments = @product.comments.order('created_at ASC')
+      @relateProducts = @product.relateProducts(params)
+    end
   end
 
 

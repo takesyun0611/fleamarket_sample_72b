@@ -9,7 +9,7 @@ class Product < ApplicationRecord
   accepts_nested_attributes_for :brand
   has_many :pictures, foreign_key: "product_id", dependent: :destroy
   accepts_nested_attributes_for :pictures, allow_destroy: true
-  has_many :comments
+  has_many :comments, foreign_key: "product_id", dependent: :destroy
 
   validates_associated :pictures
   validates :pictures, presence: { message: "してください"}

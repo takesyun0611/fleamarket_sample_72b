@@ -54,8 +54,15 @@ $(document).on('DOMContentLoaded turbolinks:render', function() {
     }
     else
     {
-      $("#category_child").remove();
-      $("#category_grandchild").remove();
+      $("#category_child_search").remove();
+      $("#category_grandchild_search").remove();
     }
   }
+
+  $(".search-extend--buttons__clear").on("click", function() {
+    $("#q_name_cont").val('');
+    $("#productSearch")[0].reset();
+    $("#category_child_search").remove();
+    $("#category_grandchild_search").remove();
+  });
 });

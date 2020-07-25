@@ -1,6 +1,6 @@
 .main
   .search-extend
-    = search_form_for @q, url: search_index_path do |f|
+    = search_form_for @q, url: search_index_path, name: "productSearch", id: "productSearch" do |f|
       .search-extend--content
         .search-extend--content__label
           = f.label :keyword, "キーワード"
@@ -8,39 +8,39 @@
       
       .search-extend--content#category
         .search-extend--content__label
-          = f.label :keyword, "カテゴリを選択する"
+          = f.label :category, "カテゴリを選択する"
         = f.collection_select :category_id, @category_parents, :id, :name, {include_blank: '選択してください'}, {class: 'category_parent_search', id: 'category_parent_search'}
       
       .search-extend--content
         .search-extend--content__label
-          = f.label :keyword, "ブランド"
+          = f.label :brand, "ブランド"
         = f.search_field :brand_id, placeholder: "例）シャネル"
       
       .search-extend--content
         .search-extend--content__label
-          = f.label :keyword, "サイズ"
+          = f.label :size, "サイズ"
         = f.search_field :size, placeholder: "例）Mサイズ"
       
       .search-extend--content
         .search-extend--content__label
-          = f.label :keyword, "価格"
+          = f.label :price, "価格"
         = f.number_field :price_gteq, placeholder: "¥ Min"
         = "~"
         = f.number_field :price_lt, placeholder: "¥ Max"
       
       .search-extend--content
         .search-extend--content__label
-          = f.label :status_id_eq, "商品の状態"
+          = f.label :status, "商品の状態"
         = f.collection_select :status_id_eq, Status.all, :id, :status, :include_blank => '指定なし'
       
       .search-extend--content
         .search-extend--content__label
-          = f.label :status_id_eq, "配送料の負担"
+          = f.label :delivery_fee, "配送料の負担"
         = f.collection_select :delivery_fee_id_eq, DeliveryFee.all, :id, :delivery_fee, {include_blank: '選択してください'}, {class: 'aaa', id: 'bbb'}
       
       .search-extend--content
         .search-extend--content__label
-          = f.label :status_id_eq, "販売状況"
+          = f.label :sold_out, "販売状況"
         = f.collection_select :sold_out_eq, SoldOut.all, :id, :status, :include_blank => '指定なし'
 
       .search-extend--buttons

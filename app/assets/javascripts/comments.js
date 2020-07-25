@@ -1,4 +1,4 @@
-$(function() {
+$(document).on('DOMContentLoaded turbolinks:render', function() {
   function buildHTML(comment){
     var html = `
     <div class="showProduct--comment__comments__box">
@@ -20,6 +20,7 @@ $(function() {
     e.preventDefault();
     var formData = new FormData(this);
     var url = $(this).attr('action');
+    $('.comment-content').val('');
     $.ajax({
       url: url,
       type: "POST",
@@ -31,7 +32,6 @@ $(function() {
     .done(function(data){
       var html = buildHTML(data);
       $('.showProduct--comment__comments').append(html);
-      $('#new_comment').reset();
     })
   });
 });

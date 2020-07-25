@@ -3,8 +3,30 @@
     = search_form_for @q, url: search_index_path do |f|
       = f.label :keyword, "キーワード"
       = f.search_field :name_cont
+
       = f.label :keyword, "カテゴリを選択する"
+      = f.collection_select :category_id, @category_parents, :id, :name, {include_blank: '選択してください'}, {class: 'category_parent', id: 'category_parent'}
       
+      = f.label :keyword, "ブランド"
+      = f.search_field :brand_id
+      
+      = f.label :keyword, "サイズ"
+      = f.search_field :size
+
+      = f.label :keyword, "価格"
+      = f.number_field :price_gteq
+      以上
+      = f.number_field :price_lt
+      未満
+      = f.label :status_id_eq, "商品の状態"
+      = f.collection_select :status_id_eq, Status.all, :id, :status, :include_blank => '指定なし'
+
+      = f.label :status_id_eq, "配送料の負担"
+      = f.collection_select :delivery_fee_id_eq, DeliveryFee.all, :id, :delivery_fee, {include_blank: '選択してください'}, {class: 'aaa', id: 'bbb'}
+
+
+      = f.label :status_id_eq, "販売状況"
+      = f.collection_select :sold_out_eq, SoldOut.all, :id, :status, :include_blank => '指定なし'
       = f.submit "検索"
   .searchResults
     .searchResults--title

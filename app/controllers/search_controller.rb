@@ -1,5 +1,6 @@
 class SearchController < ApplicationController
   def index
-    @products = Product.search(params[:keyword])
+    @q = Product.ransack(params[:q])
+    @products = @q.result(distinct: true)
   end
 end

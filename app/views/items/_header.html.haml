@@ -3,18 +3,14 @@
     .top-items__icons
       = link_to "/" do
         = image_tag "http://furima.tokyo/assets/logo-d3d78326971d78b06e3d6f0ba666d025a8ad681286b4d9e00e7dbe8673bcfd23.svg"
-    = form_with(url: url_with_params(search_index_path, @keyword), local: true, method: :get, class: "search-form") do |f|
+    = search_form_for @q, url: search_index_path do |f|
       .top-items__serch
         .top-items__serch--serch-box
-          = f.text_field :keyword, {type: "text", placeholder: "キーワードから探す"}
-          -# %input{type: "text", placeholder: "キーワードから探す"}
+          = f.search_field :name_cont, {type: "text", placeholder: "キーワードから探す"}
         .top-items__serch--serch-icon
           = f.label :search_submit, class: 'search_submit', for: 'search_submit' do
             = image_tag "http://furima.tokyo/assets/icon-search-60a83ada85216fe00789cd16065281694d9a08948275fef83683fadcf131d84d.svg"
             = f.submit class: 'hidden', id: 'search_submit', name: nil
-
-          -# = image_tag "http://furima.tokyo/assets/icon-search-60a83ada85216fe00789cd16065281694d9a08948275fef83683fadcf131d84d.svg"
-          -# = f.submit "検索", class: "search-btn"
   .top-navi
     %ul.top-navi__left
       %li.top-navi__left--first<

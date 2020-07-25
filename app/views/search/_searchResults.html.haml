@@ -1,4 +1,11 @@
 .main
+  .search-extend
+    = search_form_for @q, url: search_index_path do |f|
+      = f.label :keyword, "キーワード"
+      = f.search_field :name_cont
+      = f.label :keyword, "カテゴリを選択する"
+      
+      = f.submit "検索"
   .searchResults
     .searchResults--title
       .searchResults--title--keyword

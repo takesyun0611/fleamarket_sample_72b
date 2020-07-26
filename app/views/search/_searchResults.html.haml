@@ -4,7 +4,7 @@
       .search-extend--content
         .search-extend--content__label
           = f.label :keyword, "キーワード"
-        = f.search_field :name_cont, placeholder: "例）値下げ"
+        = f.search_field :name_cont, placeholder: "例）値下げ", value: ""
       
       .search-extend--content#category
         .search-extend--content__label
@@ -19,7 +19,7 @@
       .search-extend--content
         .search-extend--content__label
           = f.label :size, "サイズ"
-        = f.search_field :size, placeholder: "例）Mサイズ"
+        = f.search_field :size_cont, placeholder: "例）Mサイズ"
       
       .search-extend--content
         .search-extend--content__label
@@ -36,7 +36,7 @@
       .search-extend--content
         .search-extend--content__label
           = f.label :delivery_fee, "配送料の負担"
-        = f.collection_select :delivery_fee_id_eq, DeliveryFee.all, :id, :delivery_fee, {include_blank: '選択してください'}, {class: 'aaa', id: 'bbb'}
+        = f.collection_select :delivery_fee_id_eq, DeliveryFee.all, :id, :delivery_fee, :include_blank => '選択してください'
       
       .search-extend--content
         .search-extend--content__label

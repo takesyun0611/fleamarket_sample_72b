@@ -60,9 +60,22 @@ $(document).on('DOMContentLoaded turbolinks:render', function() {
   }
 
   $(".search-extend--buttons__clear").on("click", function() {
-    $("#q_name_cont").val('');
-    $("#productSearch")[0].reset();
+    $("#q_price_gteq").val('');
+    $("#q_price_lt").val('');
+    document.getElementById("productSearch").reset();
     $("#category_child_search").remove();
     $("#category_grandchild_search").remove();
+  });
+
+  $('#productSearch').on('submit', function(e){
+    $('#productSearch').off('submit');
+    if($("#category_grandchild_search").val() == "") {
+      $("#category_grandchild_search").remove();
+    };
+    if($("#category_child_search").val() == "") {
+      $("#category_child_search").remove();
+    };
+    
+    $('#productSearch').submit();
   });
 });

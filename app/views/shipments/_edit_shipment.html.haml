@@ -1,0 +1,59 @@
+.shipment-page__main
+  .container
+    .header
+      %h2 送付先情報の変更
+    .form
+      = form_for @shipment do |f|
+        - if @shipment.errors.any?
+          .errors
+            %h2= "#{@shipment.errors.full_messages.count}件のエラーが発生しました。"
+            %ul
+              - @shipment.errors.full_messages.each do |message|
+                %li= message
+        .field
+          = f.label :お名前（全角）, class: "field__label"
+          %span.field__require 必須
+          %br/
+          .input-box-half
+          = f.text_field :family_name, class: "input-box-half--left"
+          = f.text_field :given_name, class: "input-box-half--right"
+        .field
+          = f.label :お名前カナ（全角）, class: "field__label"
+          %span.field__require 必須
+          %br/
+          = f.text_field :family_name_kana, class: "input-box-half--left"
+          = f.text_field :given_name_kana, class: "input-box-half--right"
+        .field
+          = f.label :郵便番号, class: "field__label"
+          %span.field__require 必須
+          %br/
+          = f.text_field :postal_code, class: "input-box"
+        .field
+          = f.label :都道府県, class: "field__label"
+          %span.field__require 必須
+          %br/
+          = f.collection_select :prefecture, JpPrefecture::Prefecture.all, :name, :name
+        .field
+          = f.label :市区町村, class: "field__label"
+          %span.field__require 必須
+          %br/
+          = f.text_field :city, class: "input-box"
+        .field
+          = f.label :番地, class: "field__label"
+          %span.field__require 必須
+          %br/
+          = f.text_field :house_number, class: "input-box"
+        .field
+          = f.label :建物名, class: "field__label"
+          %br/
+          = f.text_field :building_name, class: "input-box"
+        .field
+          = f.label :部屋番号, class: "field__label"
+          %br/
+          = f.text_field :room_number, class: "input-box"
+        .field
+          = f.label :電話番号, class: "field__label"
+          %br/
+          = f.text_field :phone_number, class: "input-box"
+        .actions
+          = f.submit "登録完了", class: "complete-btn"

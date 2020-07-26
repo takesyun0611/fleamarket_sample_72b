@@ -257,7 +257,7 @@ $(document).on('turbolinks:load', function() {
   });
 });
 
-$(function(){
+$(document).on('turbolinks:load', function(){
   $('.showProduct--info__optional__like').on('click', function(e){
     e.preventDefault();
     var like = this.value;

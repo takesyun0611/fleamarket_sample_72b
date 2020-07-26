@@ -4,13 +4,23 @@
       .search-extend--content
         .search-extend--content__label
           = f.label :keyword, "キーワード"
-        = f.search_field :name_cont, placeholder: "例）値下げ", value: ""
+        = f.search_field :name_cont, placeholder: "例）値下げ"
       
       .search-extend--content#category
         .search-extend--content__label
           = f.label :category, "カテゴリを選択する"
-        = f.collection_select :category_id, @category_parents, :id, :name, {include_blank: '選択してください'}, {class: 'category_parent_search', id: 'category_parent_search'}
-      
+        - if !@parent.nil?
+          = f.collection_select :category_id, @category_parents, :id, :name, {include_blank: '選択してください', selected: @parent.id}, {class: 'category_parent_search', id: 'category_parent_search'}
+          - if !@child.nil?
+            = f.collection_select :category_id, @parent.children, :id, :name, {include_blank: '選択してください', selected: @child.id}, {class: 'category_child_search', id: 'category_child_search'}
+            - if !@grandchild.nil?
+              = f.collection_select :category_id, @child.children, :id, :name, {include_blank: '選択してください', selected: @grandchild.id}, {class: 'category_grandchild_search', id: 'category_grandchild_search'}
+            - else
+              = f.collection_select :category_id, @child.children, :id, :name, {include_blank: '選択してください'}, {class: 'category_grandchild_search', id: 'category_grandchild_search'}
+          - else
+            = f.collection_select :category_id, @parent.children, :id, :name, {include_blank: '選択してください'}, {class: 'category_child_search', id: 'category_child_search'}
+        - else
+          = f.collection_select :category_id, @category_parents, :id, :name, {include_blank: '選択してください'}, {class: 'category_parent_search', id: 'category_parent_search'}
       .search-extend--content
         .search-extend--content__label
           = f.label :brand, "ブランド"
@@ -26,7 +36,7 @@
           = f.label :price, "価格"
         = f.number_field :price_gteq, placeholder: "¥ Min"
         = "~"
-        = f.number_field :price_lt, placeholder: "¥ Max"
+        = f.number_field :price_lteq, placeholder: "¥ Max"
       
       .search-extend--content
         .search-extend--content__label

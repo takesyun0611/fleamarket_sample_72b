@@ -32,5 +32,19 @@ class SearchController < ApplicationController
         end
       end
     end
+
+    if !@category.nil? && (!@category.parent.nil?) && (!@category.parent.parent.nil?)
+      @parent = @category.parent.parent
+      @child = @category.parent
+      @grandchild = @category
+    elsif !@category.nil? && (!@category.parent.nil?)
+      @parent = @category.parent
+      @child = @category
+      @grandchild = nil
+    elsif !@category.nil?
+      @parent = @category
+      @child = nil
+      @grandchild = nil
+    end
   end
 end

@@ -75,7 +75,23 @@ $(document).on('DOMContentLoaded turbolinks:render', function() {
     if($("#category_child_search").val() == "") {
       $("#category_child_search").remove();
     };
-    
     $('#productSearch').submit();
   });
+
+  var selectParent = document.getElementById('category_child_search');
+  selectParent.onchange = function(){
+    if(this.value != ""){
+      var input = this.value;
+      $.ajax({
+        type: 'GET',
+        url: '/products/searchChild',
+        data: { id: input },
+        dataType: 'json'
+      })
+      .done(function(children) {
+        $("#category_grandchild_search").remove();
+        AppendCategorySearch(children,"grandchild_search");
+      })
+    }
+  }
 });

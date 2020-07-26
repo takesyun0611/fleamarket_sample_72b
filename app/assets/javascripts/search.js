@@ -20,44 +20,48 @@ $(document).on('DOMContentLoaded turbolinks:render', function() {
     $("#category").append(html1+html2+html3);
   }
 
-  var selectParentSearch = document.getElementById('category_parent_search');
-  selectParentSearch.onchange = function(){
-    if(this.value != ""){
-      var input = this.value;
-      $.ajax({
-        type: 'GET',
-        url: '/products/searchChild',
-        data: { id: input },
-        dataType: 'json'
-      })
-      .done(function(children) {
+  function categoryList() {
+    var selectParentSearch = document.getElementById('category_parent_search');
+    selectParentSearch.onchange = function(){
+      if(this.value != ""){
+        var input = this.value;
+        $.ajax({
+          type: 'GET',
+          url: '/products/searchChild',
+          data: { id: input },
+          dataType: 'json'
+        })
+        .done(function(children) {
+          $("#category_child_search").remove();
+          $("#category_grandchild_search").remove();
+          AppendCategorySearch(children,"child_search");
+          var selectParent = document.getElementById('category_child_search');
+          selectParent.onchange = function(){
+            if(this.value != ""){
+              var input = this.value;
+              $.ajax({
+                type: 'GET',
+                url: '/products/searchChild',
+                data: { id: input },
+                dataType: 'json'
+              })
+              .done(function(children) {
+                $("#category_grandchild_search").remove();
+                AppendCategorySearch(children,"grandchild_search");
+              })
+            }
+          }
+        })
+      }
+      else
+      {
         $("#category_child_search").remove();
         $("#category_grandchild_search").remove();
-        AppendCategorySearch(children,"child_search");
-        var selectParent = document.getElementById('category_child_search');
-        selectParent.onchange = function(){
-          if(this.value != ""){
-            var input = this.value;
-            $.ajax({
-              type: 'GET',
-              url: '/products/searchChild',
-              data: { id: input },
-              dataType: 'json'
-            })
-            .done(function(children) {
-              $("#category_grandchild_search").remove();
-              AppendCategorySearch(children,"grandchild_search");
-            })
-          }
-        }
-      })
-    }
-    else
-    {
-      $("#category_child_search").remove();
-      $("#category_grandchild_search").remove();
+      }
     }
   }
+
+  categoryList();
 
   function ResetSearchForm() {
     let html = `
@@ -129,44 +133,7 @@ $(document).on('DOMContentLoaded turbolinks:render', function() {
   $(".search-extend--buttons__clear").on("click", function() {
     $(".search-extend--content").remove()
     ResetSearchForm();
-    var selectParentSearch = document.getElementById('category_parent_search');
-    selectParentSearch.onchange = function(){
-      if(this.value != ""){
-        var input = this.value;
-        $.ajax({
-          type: 'GET',
-          url: '/products/searchChild',
-          data: { id: input },
-          dataType: 'json'
-        })
-        .done(function(children) {
-          $("#category_child_search").remove();
-          $("#category_grandchild_search").remove();
-          AppendCategorySearch(children,"child_search");
-          var selectParent = document.getElementById('category_child_search');
-          selectParent.onchange = function(){
-            if(this.value != ""){
-              var input = this.value;
-              $.ajax({
-                type: 'GET',
-                url: '/products/searchChild',
-                data: { id: input },
-                dataType: 'json'
-              })
-              .done(function(children) {
-                $("#category_grandchild_search").remove();
-                AppendCategorySearch(children,"grandchild_search");
-              })
-            }
-          }
-        })
-      }
-      else
-      {
-        $("#category_child_search").remove();
-        $("#category_grandchild_search").remove();
-      }
-    }
+    categoryList()
   });
 
   $('#productSearch').on('submit', function(e){

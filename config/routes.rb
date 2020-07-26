@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     get 'shipments', to: 'users/registrations#new_shipment'
     post 'shipments', to: 'users/registrations#create_shipment'
+    resources :shipments, only: [:edit, :update]
   end
   root 'items#index'
   resources :products, only: [:index, :create, :destroy] do

@@ -22,15 +22,6 @@
               = f.collection_select :category_id, @parent.children, :id, :name, {include_blank: '選択してください'}, {class: 'category_child_search', id: 'category_child_search'}
           - else
             = f.collection_select :category_id, @category_parents, :id, :name, {include_blank: '選択してください'}, {class: 'category_parent_search', id: 'category_parent_search'}
-        -# .search-extend--content
-        -#   .search-extend--content__label
-        -#     = f.label :brand, "ブランド"
-        -#   = f.search_field :brand_id, placeholder: "例）シャネル"
-        
-        -# .search-extend--content
-        -#   .search-extend--content__label
-        -#     = f.label :size, "サイズ"
-        -#   = f.search_field :size_cont, placeholder: "例）Mサイズ"
         
         .search-extend--content
           .search-extend--content__label

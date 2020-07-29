@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
 
   before_action :basic_auth, if: :production?
+  before_action :define_q
 
   private
   
@@ -13,6 +14,10 @@ class ApplicationController < ActionController::Base
       username == Rails.application.credentials[:basic_auth][:user] &&
       password == Rails.application.credentials[:basic_auth][:pass]
     end
+  end
+
+  def define_q
+    @q = Product.ransack(params[:q])
   end
 
 end

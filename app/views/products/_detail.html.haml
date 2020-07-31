@@ -82,9 +82,9 @@
             %td
               = DateOfShip.find(@product.date_of_ship_id)[:date_of_ship]
       .showProduct--info__optional
-        = button_to product_likes_path(current_user, product_id: @product.id), method: :post, class: 'showProduct--info__optional__like', id: 'data-id' do
+        .showProduct--info__optional__like__active{"data-product": @product.id, "data-user": current_user.id}
           = icon('fas', 'star')
-          &nbsp;お気に入り 0
+          &nbsp;お気に入り
         .showProduct--info__optional__report
           = icon('fas', 'flag')
           &nbsp;不適切な商品の通報

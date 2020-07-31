@@ -257,13 +257,17 @@ $(document).on('turbolinks:load', function() {
   });
 });
 
-$(document).on('turbolinks:load', function(){
-  $('.showProduct--info__optional__like').on('click', function(e){
+$(function(){
+  $(".showProduct--info__optional__like__active").on('click', function(e){
     e.preventDefault();
-    var like = this.value;
+    var like = document.querySelector(".showProduct--info__optional__like__active");
+    var likeurl = '/likes'
+    console.log(like.dataset.product);
+    console.log(like.dataset.user);
+    // debugger;
     $.ajax({
-      type: 'POST',
-      url: '/likes/create',
+      type: "POST",
+      url: '/likes',
       data: like,
       dataType: 'json',
       processData: false,

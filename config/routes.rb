@@ -22,7 +22,7 @@ Rails.application.routes.draw do
       get :update_done
     end
     resources :comments, only: :create
-    resources :likes, only: [:create, :destroy]
   end
+  resources :likes, only: [:create, :destroy]
   resources :search, only: [:index]
 end

@@ -1,6 +1,7 @@
 class LikesController < ApplicationController
 
   def create
+    # binding.pry
     @like = Like.new(like_params)
     @like.save
   end

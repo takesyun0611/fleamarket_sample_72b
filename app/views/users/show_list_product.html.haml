@@ -1,6 +1,11 @@
 .wrapper
   = render "items/header"
+  
+  .my-page-box
+    .my-page-box__block
+      = render "list_products_side_bar"
 
-  = render 'list_products'
+      = render 'list_products'
+      
 
   = render "items/footer"

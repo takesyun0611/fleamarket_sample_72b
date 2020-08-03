@@ -82,7 +82,7 @@
             %td
               = DateOfShip.find(@product.date_of_ship_id)[:date_of_ship]
       .showProduct--info__optional
-        .showProduct--info__optional__like__active{"data-product": @product.id, "data-user": current_user.id}
+        .showProduct--info__optional__like__active{"data-product": @product.id}
           = icon('fas', 'star')
           &nbsp;お気に入り
         .showProduct--info__optional__report

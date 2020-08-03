@@ -260,15 +260,14 @@ $(document).on('turbolinks:load', function() {
 $(function(){
   $(".showProduct--info__optional__like__active").on('click', function(e){
     e.preventDefault();
-    var like = document.querySelector(".showProduct--info__optional__like__active");
-    var likeurl = '/likes'
-    console.log(like.dataset.product);
-    console.log(like.dataset.user);
-    // debugger;
+    var like = '/likes';
+    var url = location.pathname;
+    var likedata = document.querySelector(".showProduct--info__optional__like__active");
+    console.log(url+like);
     $.ajax({
       type: "POST",
-      url: '/likes',
-      data: like,
+      url: url+like,
+      data: likedata,
       dataType: 'json',
       processData: false,
       contentType: false

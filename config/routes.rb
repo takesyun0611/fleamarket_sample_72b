@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     post 'shipments', to: 'users/registrations#create_shipment'
   end
   root 'items#index'
-  resources :products, only: [:index, :create, :destroy] do
+  resources :products, only: [:index, :create, :destroy, :show] do
     get 'buy','products/buy'
   end
   resources :users, only: :show do
@@ -21,8 +21,8 @@ Rails.application.routes.draw do
       get :searchChild
       get :update_done
     end
+    resources :likes, only: [:create, :destroy]
     resources :comments, only: :create
   end
-  resources :likes, only: [:create, :destroy]
   resources :search, only: [:index]
 end

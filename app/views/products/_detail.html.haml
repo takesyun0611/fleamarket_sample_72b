@@ -82,12 +82,20 @@
             %td
               = DateOfShip.find(@product.date_of_ship_id)[:date_of_ship]
       .showProduct--info__optional
-        .showProduct--info__optional__like__active{"data-product": @product.id}
-          = icon('fas', 'star')
-          &nbsp;お気に入り
-        .showProduct--info__optional__report
-          = icon('fas', 'flag')
-          &nbsp;不適切な商品の通報
+        - if @product.likes.present?
+          .showProduct--info__optional__report
+            = icon('fas', 'flag')
+            &nbsp;不適切な商品の通報
+          .showProduct--info__optional__active
+            = icon('fas', 'star')
+            登録済み
+        - else
+          .showProduct--info__optional__report
+            = icon('fas', 'flag')
+            &nbsp;不適切な商品の通報
+          .showProduct--info__optional__like
+            = icon('fas', 'star')
+            &nbsp;お気に入り
       - if @product.sold_out.present?
         .showProduct--info__buy
           売り切れ

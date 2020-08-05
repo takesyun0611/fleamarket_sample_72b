@@ -257,20 +257,31 @@ $(document).on('turbolinks:load', function() {
   });
 });
 
-$(document).on('DOMContentLoaded turbolinks:render', function() {
-  $(".showProduct--info__optional__like__active").on('click', function(e){
-    e.preventDefault();
-    var like = '/likes';
-    var url = location.pathname;
-    var likedata = document.querySelector(".showProduct--info__optional__like__active");
-    console.log(url+like);
-    $.ajax({
-      type: "POST",
-      url: url+like,
-      data: likedata,
-      dataType: 'json',
-      processData: false,
-      contentType: false
+// いいね機能 ajax非同期通信
+  $(document).on('DOMContentLoaded turbolinks:render', function() {
+    function buildLike(){
+      var html = `<div class="showProduct--info__optional__active">
+                    <i class="fas fa-star"></i>
+                    &nbsp;登録済み
+                  </div>`
+      return html;
+    }
+    $(".showProduct--info__optional__like").on('click', function(e){
+      e.preventDefault();
+      var like = '/likes';
+      var url = location.pathname;
+      console.log(url+like);
+      $(".showProduct--info__optional__like").first().remove();
+      $.ajax({
+        type: "POST",
+        url: url+like,
+        dataType: 'json',
+        processData: false,
+        contentType: false
+      })
+      .done(function(){
+        var html = buildLike;
+        $('.showProduct--info__optional').append(html)
+      })
     })
   });
-});

@@ -614,19 +614,25 @@ hr {
     &__optional {
       display: flex;
       justify-content: space-between;
+      &__active {
+        background-color: rgb(136, 136, 136);
+        color: #f5f5f5;
+        margin: 10px 0 0;
+        padding: 6px 10px;
+        border-radius: 40px;
+        display: flex;
+        align-items: center;
+      }
       &__like {
-        &__active {
-          margin: 10px 0 0;
-          margin-right: auto;
-          padding: 6px 10px;
-          border-radius: 40px;
-          color: #3CCACE;
-          border: 1px solid #ffb340;
-          display: flex;
-          align-items: center;
-          cursor: pointer;
-          background-color: white;
-        }
+        margin: 10px 0 0;
+        padding: 6px 10px;
+        border-radius: 40px;
+        color: #3CCACE;
+        border: 1px solid #ffb340;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        background-color: white;
         .fa-star {
           font-size: 14px;
         }

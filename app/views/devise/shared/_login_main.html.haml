@@ -9,9 +9,9 @@
     = link_to user_facebook_omniauth_authorize_path, method: :post, class: "sns-login__btn sns-login__btn--facebook" do
       = icon('fab', 'facebook-square', class:"sns-login__btn--icon")
       Facebookでログイン
-    =link_to "#", class: "sns-login__btn sns-login__btn--apple" do
-      = icon('fab', 'apple', class:"sns-login__btn--icon")
-      Appleでログイン
+    -# =link_to "#", class: "sns-login__btn sns-login__btn--apple" do
+    -#   = icon('fab', 'apple', class:"sns-login__btn--icon")
+    -#   Appleでログイン
   .login-page__main__form
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       .field

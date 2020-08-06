@@ -12,14 +12,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     @user = User.new(sign_up_params)
+    # sns認証で新規登録時
     if params[:sns_auth] == 'true'
       pass = Devise.friendly_token
-      params[:user][:password] = pass
-      params[:user][:password_confirmation] = pass
-      session["devise.regist_data"] = {user: @user.attributes}
-      session["devise.regist_data"][:user]["password"] = params[:user][:password]
-      @shipment = @user.shipments.build
-      render :new_shipment
+      @user.password = pass
+      @user.password_confirmation = pass
+      if @user.valid? == false
+        render :new
+      else
+        session["devise.regist_data"] = {user: @user.attributes}
+        session["devise.regist_data"][:user]["password"] = params[:user][:password]
+        @shipment = @user.shipments.build
+        render :new_shipment
+      end
+    # メールアドレスで新規登録時
     elsif @user.valid? == false
       render :new
     else

@@ -86,7 +86,7 @@
           .showProduct--info__optional__report
             = icon('fas', 'flag')
             &nbsp;不適切な商品の通報
-          .showProduct--info__optional__active
+          .showProduct--info__optional__active{data: {id: current_user.id}}
             = icon('fas', 'star')
             登録済み
         - else

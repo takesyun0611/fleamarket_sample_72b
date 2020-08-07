@@ -267,10 +267,10 @@ $(document).on('turbolinks:load', function() {
       return html;
     }
     $(".showProduct--info__optional__like").on('click', function(e){
-      e.preventDefault();
+      // e.preventDefault();
       var like = '/likes';
       var url = location.pathname;
-      console.log(url+like);
+      // console.log(url+like);
       $(".showProduct--info__optional__like").first().remove();
       $.ajax({
         type: "POST",
@@ -281,6 +281,31 @@ $(document).on('turbolinks:load', function() {
       })
       .done(function(){
         var html = buildLike;
+        $('.showProduct--info__optional').append(html)
+      })
+    })
+    function deleteLike(){
+      var html = `<div class="showProduct--info__optional__like">
+                    <i class="fas fa-star"></i>
+                    &nbsp;お気に入り
+                  </div>`
+      return html;
+    }
+    $(".showProduct--info__optional__active").on('click', function(e){
+      // e.preventDefault();
+      var like = '/likes';
+      var id = $('.showProduct--info__optional__active').data()["id"];
+      var url = location.pathname;
+      $(".showProduct--info__optional__active").first().remove();
+      $.ajax({
+        type: "DELETE",
+        url: url+like+"/"+id,
+        dataType: 'json',
+        processData: false,
+        contentType: false
+      })
+      .done(function(){
+        var html = deleteLike;
         $('.showProduct--info__optional').append(html)
       })
     })

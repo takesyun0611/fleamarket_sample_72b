@@ -6,6 +6,9 @@ class LikesController < ApplicationController
   end
 
   def destroy
+    @like = Like.find_by(user_id: params[:id])
+    # binding.pry
+    @like.destroy
   end
 
   private

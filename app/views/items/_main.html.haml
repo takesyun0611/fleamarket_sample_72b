@@ -88,7 +88,7 @@
         .main__pickup--product-lists--firsts
           - @products.each do |product|
             .main__pickup--product-lists--point
-              = link_to "#" do
+              = link_to product_path(id: product[:id]) do
                 = image_tag product.pictures[0].content.url
                 .main__pickup--product-lists--first--body
                   %h3

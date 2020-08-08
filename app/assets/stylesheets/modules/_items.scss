@@ -163,12 +163,12 @@ a {
       height: 462px;
       margin: 0 auto;
       display: flex;
-      justify-content: start;
+      justify-content: center;
       
       .main__reason__list--first{
         width: 306px;
         height: 446px;
-        margin: 16px 5% 0 150px;
+        margin: 16px 5% 0 0;
         position: relative;
         .number {
           position: absolute;
@@ -340,11 +340,11 @@ a {
       height: 462px;
       margin: 0 auto;
       display: flex;
-      justify-content: start;
+      justify-content: center;
       .main__features__list--first {
         width: 306px;
         height: 446px;
-        margin: 16px 5% 0 150px;
+        margin: 16px 5% 0 0;
         img{
           height: 306px;
           width: 306px;

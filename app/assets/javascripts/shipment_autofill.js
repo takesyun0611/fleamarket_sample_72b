@@ -1,4 +1,4 @@
-$(document).on('DOMContentLoaded turbolinks:render', function() {
+$(function() {
   $(function() {
     return $('#shipment_postal_code').jpostal({
       postcode: ['#shipment_postal_code'],
